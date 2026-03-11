@@ -1,0 +1,1091 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INEV – Industriell Evolution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#0f0f0e;--paper:#f8f6f1;--stone:#c8c2b8;--rust:#8b5e3c;--sage:#4a5c4e;--off:#f0ede7}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:var(--paper);border-bottom:1px solid var(--stone)}
+.nav-logo{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:400;letter-spacing:.14em;cursor:pointer}
+.nav-logo-sub{font-size:.52rem;letter-spacing:.28em;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--rust);opacity:.85;margin-top:.25rem;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;opacity:.6;cursor:pointer;transition:opacity .2s}
+.nav-links a:hover,.nav-links a.active-link{opacity:1}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+.nav-hamburger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.is-open span:nth-child(2){opacity:0}
+.nav-hamburger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* PAGES */
+.page{display:none;padding-top:64px;min-height:100vh}
+.page.active{display:block}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:.75rem 1.75rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;border:none;transition:all .2s}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:#333}
+.btn-light{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+.btn-light:hover{background:var(--off)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 3rem}
+.hero-eyebrow{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;opacity:.5;margin-bottom:1.5rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.05;font-weight:500;margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--rust)}
+.hero-body{font-size:.95rem;opacity:.7;max-width:420px;margin-bottom:2.5rem;line-height:1.7}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--stone);align-items:flex-end}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;line-height:1}
+.stat-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;margin-top:.35rem}
+.mini-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;line-height:1}
+.mini-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;margin-top:.35rem}
+.hero-right{position:relative;overflow:hidden}
+.hero-right-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-right-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,15,14,.18) 0%,transparent 60%)}
+
+/* SECTIONS */
+.section{padding:6rem 3rem}
+.section-narrow{max-width:1100px;margin:0 auto}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.om-intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:center;margin-bottom:0}
+.split-sticky{}
+.section-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;opacity:.4;margin-bottom:1rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;font-weight:500;margin-bottom:2rem}
+.section-title em{font-style:italic;color:var(--rust)}
+.body-text{font-size:1rem;opacity:.75;line-height:1.85;margin-bottom:1.3rem}
+.pill{display:inline-block;padding:.35rem .9rem;border:1px solid var(--stone);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin:.3rem .3rem 0 0;border-radius:2px}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:1.5rem}
+.card{background:var(--paper);padding:2rem;display:flex;flex-direction:column;gap:.8rem;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500}
+.card-cat{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;opacity:.45}
+.card-desc{font-size:.85rem;opacity:.65;line-height:1.6;flex:1}
+.card-arrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-top:.5rem}
+
+/* CTA BAND */
+.cta-band{background:var(--ink);color:var(--paper);padding:5rem 3rem;text-align:center}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:1rem}
+.cta-band p{opacity:.6;margin-bottom:2rem;font-size:.95rem}
+
+/* FOOTER */
+.footer{background:var(--off);padding:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;border-top:1px solid var(--stone)}
+.footer-logo{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:400;letter-spacing:.14em;cursor:pointer}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;cursor:pointer;transition:opacity .2s}
+.footer-links a:hover{opacity:1}
+
+/* INNEHAV */
+.innehav-list{max-width:900px;margin:0 auto}
+.category-header{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);opacity:.8;padding:2.5rem 0 .8rem;border-bottom:1px solid var(--stone);margin-bottom:.5rem}
+.company-row{display:grid;grid-template-columns:100px 210px 1fr 140px;gap:1.8rem;align-items:center;padding:1.2rem 0;border-bottom:1px solid var(--off);transition:background .15s}
+.company-row:hover{background:var(--off);margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+.company-thumb{width:100px;height:68px;object-fit:cover;border-radius:3px;display:block;background:var(--stone)}
+.company-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500}
+.company-desc{font-size:.92rem;opacity:.6;line-height:1.6}
+.company-link{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);text-align:right}
+@media(max-width:900px){
+  .company-row{grid-template-columns:60px 1fr;grid-template-rows:auto auto}
+  .company-thumb{width:60px;height:44px}
+  .company-desc{display:none}
+  .company-link{grid-column:2;text-align:left}
+}
+
+/* OM */
+.values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3rem;border-top:1px solid var(--stone)}
+.value-box{padding:2rem 2rem 2rem 1.5rem;border-right:1px solid var(--stone)}.value-box:first-child{padding-left:0}.value-box:last-child{border-right:none}
+.value-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;margin-bottom:.7rem;color:var(--rust)}
+.value-desc{font-size:.82rem;font-weight:300;line-height:1.65;opacity:.7}
+.fin-table{width:100%;border-collapse:collapse;margin-top:2.5rem;font-size:.87rem}
+.fin-table th{text-align:left;padding:.6rem .8rem;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.45;font-weight:400;border-bottom:1px solid var(--stone)}
+.fin-table td{padding:.6rem .8rem;border-bottom:1px solid var(--off)}
+.fin-table tr:hover td{background:var(--off)}
+.fin-table td:first-child{font-weight:500;opacity:.8}
+.fin-table td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+
+/* HISTORIK */
+.historik-hero{background:linear-gradient(rgba(15,15,14,.65),rgba(15,15,14,.65)),url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=85&auto=format&fit=crop') center/cover no-repeat;color:var(--paper);padding:8rem 3rem 5rem;text-align:center}
+.historik-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:400;margin-bottom:1.5rem;line-height:1.05}.historik-hero h1 em{font-style:italic;color:var(--stone)}.historik-hero p{max-width:700px}
+.historik-hero p{opacity:.55;font-size:.95rem;max-width:500px;margin:0 auto}
+.timeline{max-width:700px;margin:0 auto;padding:5rem 3rem}
+.tl-item{display:grid;grid-template-columns:100px 1fr;gap:2.5rem;padding-bottom:4rem;position:relative}
+.tl-item::before{content:'';position:absolute;left:49px;top:10px;bottom:0;width:1px;background:var(--stone)}
+.tl-year{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;padding-top:.1rem;position:relative;z-index:1}
+.tl-content h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;margin-bottom:.4rem}
+.tl-content p{font-size:.92rem;opacity:.6;line-height:1.7}
+
+
+
+/* LANG TOGGLE */
+.lang-toggle{display:flex;align-items:center;gap:.4rem;font-size:.75rem;letter-spacing:.12em;cursor:pointer;user-select:none}
+.lang-toggle span{opacity:.35;transition:opacity .15s}
+.lang-toggle .lang-sep{opacity:.2}
+.lang-toggle .lang-active{opacity:1;font-weight:500}
+
+/* CAROUSEL */
+.carousel-wrap{margin-top:1.5rem}
+.carousel-track{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;min-height:200px}
+.carousel-card{background:var(--paper);padding:2rem;display:flex;flex-direction:column;gap:.8rem}
+.carousel-controls{display:flex;align-items:center;gap:1.5rem;margin-top:2rem}
+.carousel-btn{background:none;border:1px solid var(--stone);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1rem;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
+.carousel-btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.carousel-counter{font-size:.8rem;letter-spacing:.08em;opacity:.45;font-family:'DM Sans',sans-serif}
+
+/* KONTAKT */
+.kontakt-split{display:grid;grid-template-columns:1fr 2fr;min-height:calc(100vh - 64px)}
+.kontakt-left{background:var(--rust);color:var(--paper);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.kontakt-left h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:400;margin-bottom:2rem;line-height:1.1}
+.kontakt-left p{opacity:.75;font-size:.95rem;line-height:1.7;margin-bottom:1rem}
+.kontakt-left .address{margin-top:2rem;font-size:.82rem;opacity:.6;line-height:1.8}
+.kontakt-right{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:3rem}
+.person{display:flex;gap:2rem;align-items:flex-start}
+.person-avatar{width:120px;height:120px;border-radius:50%;background:var(--stone);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.person-avatar svg{width:40px;height:40px;opacity:.4}
+.person-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:.3rem}
+.person-role{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;opacity:.45;margin-bottom:.6rem}
+.person-email{display:block;margin-top:.8rem;font-size:.8rem;color:var(--rust);font-family:'DM Sans',sans-serif;letter-spacing:.02em}
+.person-bio{font-size:1rem;opacity:.6;line-height:1.75}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .hero{grid-template-columns:1fr;grid-template-rows:auto 40vw}
+  .hero-left{padding:3rem 1.5rem 2rem}
+  .split{grid-template-columns:1fr;gap:2rem}
+  .split-sticky{position:static}
+  .cards{grid-template-columns:1fr}
+  .section{padding:4rem 1.5rem}
+  .company-row{grid-template-columns:56px 1fr;gap:.75rem 1rem}
+  .company-thumb{width:56px;height:40px}
+  .company-name{align-self:center}
+  .company-desc{grid-column:2;font-size:.8rem;opacity:.65;display:block;margin-top:.1rem}
+  .company-link{grid-column:2;text-align:left;font-size:.8rem}
+  .values-grid{grid-template-columns:1fr}
+  .kontakt-split{grid-template-columns:1fr;grid-template-rows:auto auto}
+  .kontakt-left,.kontakt-right{padding:3rem 1.5rem}
+  .footer{grid-template-columns:1fr;gap:1rem}
+  .footer-links{flex-wrap:wrap;gap:1rem}
+  .timeline{padding:3rem 1.5rem}
+  .historik-hero{padding:5rem 1.5rem 3rem}
+  .historik-hero h1{font-size:clamp(2.5rem,10vw,4rem)}
+  .historik-hero p{font-size:.9rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo" data-page="home">INEV</div>
+  <div style="display:flex;align-items:center;gap:2rem">
+    <div class="nav-links">
+      <a data-page="innehav">Innehav</a>
+      <a data-page="om">Om INEV</a>
+      <a data-page="historik">Historik</a>
+      <a data-page="kontakt">Kontakt</a>
+    </div>
+    <div class="lang-toggle" id="langToggle"><span id="langSV" class="lang-active">SV</span><span class="lang-sep">|</span><span id="langEN">EN</span></div>
+    <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div id="mobileMenu" style="display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--paper);z-index:999;padding:1.5rem 2rem 2rem;gap:1.5rem;border-bottom:1px solid var(--stone);box-shadow:0 8px 24px rgba(0,0,0,.08)">
+  <a data-page="innehav" style="font-size:1.1rem;font-family:'Cormorant Garamond',serif;letter-spacing:.05em;cursor:pointer">Innehav</a>
+  <a data-page="om" style="font-size:1.1rem;font-family:'Cormorant Garamond',serif;letter-spacing:.05em;cursor:pointer">Om INEV</a>
+  <a data-page="historik" style="font-size:1.1rem;font-family:'Cormorant Garamond',serif;letter-spacing:.05em;cursor:pointer">Historik</a>
+  <a data-page="kontakt" style="font-size:1.1rem;font-family:'Cormorant Garamond',serif;letter-spacing:.05em;cursor:pointer">Kontakt</a>
+  <div style="margin-top:.5rem;padding-top:1rem;border-top:1px solid var(--stone);display:flex;gap:.75rem;font-size:.85rem;letter-spacing:.12em">
+    <span id="mobileLangSV" style="cursor:pointer;font-weight:500">SV</span>
+    <span style="opacity:.4">|</span>
+    <span id="mobileLangEN" style="cursor:pointer">EN</span>
+  </div>
+</div>
+
+<!-- PAGE: HOME -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Grundat 2017 &middot; J&ouml;nk&ouml;ping, Sverige</p>
+      <h1 class="hero-title">Industriell<br><em>Evolution</em></h1>
+      <p class="hero-body">INEV f&ouml;rv&auml;rvar och utvecklar l&ouml;nsamma svenska bolag f&ouml;r att &auml;ga dem &mdash; f&ouml;r alltid. Vi &auml;r entrepren&ouml;rer som tror p&aring; decentraliserat ledarskap, starkt kassafl&ouml;de och implementering av ny teknik f&ouml;r att utvecklas med samtiden och s&auml;kerst&auml;lla svensk konkurrenskraft.</p>
+      <div class="hero-cta">
+        <button class="btn btn-dark" data-page="innehav">V&aring;ra innehav</button>
+        <button class="btn btn-light" data-page="om">Om oss</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">1&nbsp;500+&nbsp;<span style="font-size:1rem">MSEK</span></div>
+          <div class="stat-label">Int&auml;kter 2025</div>
+        </div>
+        <div><div class="mini-num">527</div><div class="mini-lbl">Anst&auml;llda</div></div>
+        <div><div class="mini-num">11</div><div class="mini-lbl">Portf&ouml;ljbolag</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-right-photo" src="https://images.unsplash.com/photo-1738162837438-92ff852619a1?w=1400&q=85&auto=format&fit=crop" alt="Industriell tillverkning"/>
+      <div class="hero-right-overlay"></div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--paper)">
+    <div class="section-narrow split">
+      <div class="split-sticky">
+        <div id="omLabel" class="section-label">Om INEV</div>
+        <h2 id="omTitle" class="section-title reveal">Kombinationen av erfarenhet och nyfikenhet skapar<br><em>verkligt v&auml;rde.</em></h2>
+        <div style="margin-top:1.5rem"><button id="omBtn" class="btn btn-dark" data-page="om">L&auml;s mer om oss</button></div>
+      </div>
+      <div>
+        <p id="omBody" class="body-text reveal">Bakom INEV st&aring;r ett antal entrepren&ouml;rer som vill s&auml;kerst&auml;lla svensk konkurrenskraft i en alltj&auml;mt f&ouml;r&auml;nderlig v&auml;rld. Genom n&auml;ra samarbete med bolagsledningar bidrar vi med strategisk kompetens, n&auml;tverk, kapital och hj&auml;lp med att implementera ny teknik.</p>
+        <div style="margin-top:1.5rem" class="reveal">
+          <span class="pill">F&ouml;rv&auml;rv</span>
+          <span class="pill">Industri</span>
+          <span class="pill">Handel</span>
+          <span class="pill">L&aring;ngsiktighet</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--off)">
+    <div class="section-narrow">
+      <div class="section-label" id="carouselLabel">Urval</div>
+      <h2 id="carouselTitle" class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:500;line-height:1.1;margin-bottom:1rem">Bolag vi<br><em style="font-style:italic;color:var(--rust)">tror p&aring;.</em></h2>
+      <p id="carouselBody" class="reveal" style="font-size:.95rem;opacity:.65;max-width:500px">Vi f&ouml;rv&auml;rvar f&ouml;retag med god l&ouml;nsamhet och ett starkt kassafl&ouml;de d&auml;r vi med engagemang, kompetens och investeringsvilja kan bist&aring; i den naturliga utvecklingen som industrin st&aring;r inf&ouml;r.</p>
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="carouselTrack"></div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carouselPrev" aria-label="F&ouml;reg&aring;ende">&larr;</button>
+          <span class="carousel-counter" id="carouselCounter">1–3 / 11</span>
+          <button class="carousel-btn" id="carouselNext" aria-label="N&auml;sta">&rarr;</button>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <button id="carouselBtn" class="btn btn-dark" data-page="innehav">Se alla bolag</button>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Vill du s&auml;lja ditt bolag?</h2>
+    <p>Vi &auml;r alltid intresserade av att tr&auml;ffa duktiga entrepren&ouml;rer med v&auml;lsk&ouml;tta verksamheter.</p>
+    <button class="btn btn-light" data-page="kontakt">Ta kontakt</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo" data-page="home">INEV</div>
+    <div class="footer-links">
+      <a data-page="innehav">Innehav</a>
+      <a data-page="om">Om INEV</a>
+      <a data-page="historik">Historik</a>
+      <a data-page="kontakt">Kontakt</a>
+    </div>
+  </footer>
+</div>
+
+<!-- PAGE: INNEHAV -->
+<div class="page" id="page-innehav">
+  <section class="section">
+    <div class="innehav-list">
+      <div class="section-label">Portf&ouml;lj</div>
+      <h1 class="section-title reveal">V&aring;ra<br><em>innehav.</em></h1>
+      <p class="body-text reveal" style="max-width:560px;margin-bottom:3rem">Elva bolag inom tillverkning, handel och tj&auml;nster &mdash; alla med starka marknadspositioner och erfarna ledningar.</p>
+
+      <div class="category-header">Tillverkning &amp; Bearbetning av Metall</div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://www.alfingproduktion.se/wp-content/uploads/2024/06/alfingprod240326-17-scaled.jpg" alt="Alfing" loading="lazy"/>
+        <div class="company-name">Alfing</div>
+        <div class="company-desc">Alfing Produktion erbjuder ett helhetskoncept f&ouml;r v&auml;ldefinierade kunder. Alfing Seating tillverkar och s&auml;ljer stolar f&ouml;r offentlig milj&ouml;.</div>
+        <a class="company-link" href="https://alfing.se" target="_blank">alfing.se &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://www.aip-cab.se/wp-content/uploads/aip_010921_162-2.jpg" alt="Allt i Pl&aring;t" loading="lazy"/>
+        <div class="company-name">Allt i Pl&aring;t</div>
+        <div class="company-desc">AIP Cab tillverkar hytter till tunga fordon. AIP Conversion genomf&ouml;r och s&auml;ljer fordonsanpassningar.</div>
+        <a class="company-link" href="https://alltiplat.se" target="_blank">alltiplat.se &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://www.gma.se/uploads/d4bcae27-0b27-4a49-9153-8f1e8593ac7b-Injektion_7_80.png" alt="GMA" loading="lazy"/>
+        <div class="company-name">GMA</div>
+        <div class="company-desc">Producerar packers och injektionsutrustning f&ouml;r gruv- och infrastrukturprojekt.</div>
+        <a class="company-link" href="https://gma.se" target="_blank">gma.se &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://www.stackehydraulik.com/media/e4udrxhw/5920.jpg" alt="Stacke Hydraulik" loading="lazy"/>
+        <div class="company-name">Stacke Hydraulik</div>
+        <div class="company-desc">Stacke Hydraulik &auml;r en av ledarna inom utveckling, konstruktion och tillverkning av hydraulcylindrar i Norden.</div>
+        <a class="company-link" href="https://stackehydraulik.com" target="_blank">stackehydraulik.com &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://steelcenter.se/media/jllkb51l/_47a7215-enhanced-nr.jpg" alt="Steelcenter" loading="lazy"/>
+        <div class="company-name">Steelcenter</div>
+        <div class="company-desc">Steelcenter st&ouml;djer utvalda industriella kunder som beh&ouml;ver finna r&auml;tt tillverkningsmetod f&ouml;r specifika produkter.</div>
+        <a class="company-link" href="https://steelcenter.se" target="_blank">steelcenter.se &rarr;</a>
+      </div>
+
+      <div class="category-header">Gr&ouml;nyteskötsel</div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://grasvardsmaskiner.se/media/oawjsynb/97815f2f-65d9-4bf4-a332-7b4ba68d680f-belrobotics-bd_21-1-_2200.jpg" alt="GVM" loading="lazy"/>
+        <div class="company-name">GVM Gr&auml;sv&aring;rdsmaskiner</div>
+        <div class="company-desc">GVM marknadsf&ouml;r ett brett sortiment av maskiner f&ouml;r alla typer av &auml;ndam&aring;l inom gr&ouml;nytor.</div>
+        <a class="company-link" href="https://grasvardsmaskiner.se" target="_blank">grasvardsmaskiner.se &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://s3-eu-west-1.amazonaws.com/static.wm3.se/sites/352/media/112874_medium_A16-0004-1600.jpg" alt="Walker Mowers" loading="lazy"/>
+        <div class="company-name">Walker Mowers Sweden</div>
+        <div class="company-desc">Walker Mowers Sweden har en ledande position g&auml;llande f&ouml;rs&auml;ljning av professionella &aring;kgr&auml;sklippare.</div>
+        <a class="company-link" href="https://walkermowers.se" target="_blank">walkermowers.se &rarr;</a>
+      </div>
+
+      <div class="category-header">M&ouml;bler</div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://www.lanab.com/storage/7F17E0567482FD327DD4D28D0CDD41D4EB5D2354906827BC271CA203472A4665/2660c062d5a443a49a3ea7fb7d3233fb/webp/media/db50d04d3c8d4ecfb6f2bd5b8d9a893b/Lanab-hero-rashult.webp" alt="Lanab Group" loading="lazy"/>
+        <div class="company-name">Lanab Group</div>
+        <div class="company-desc">Lanab Group &auml;r sprunget ur tv&aring; f&ouml;retag med en id&eacute; om bra och ergonomiska kontorsm&ouml;bler till r&auml;tt pris, av bra kvalitet och inom rimlig tid.</div>
+        <a class="company-link" href="https://lanabgroup.se" target="_blank">lanabgroup.se &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://vikingbeds.se/wp-content/uploads/2024/06/Viking-beds-Villa-Skog15582-1-scaled.jpg" alt="Viking Beds" loading="lazy"/>
+        <div class="company-name">Viking Beds of Sweden</div>
+        <div class="company-desc">Viking Beds str&auml;var efter att bygga f&ouml;ljsamma s&auml;ngar med h&ouml;g kvalitet.</div>
+        <a class="company-link" href="https://vikingbeds.se" target="_blank">vikingbeds.se &rarr;</a>
+      </div>
+
+      <div class="category-header">Fordon</div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://bewaintraf.se/wp-content/uploads/2026/02/Toppbild.jpg" alt="Bewa Intraf" loading="lazy"/>
+        <div class="company-name">Bewa Intraf</div>
+        <div class="company-desc">Bewa Intraf AB har &ouml;ver 30 &aring;rs erfarenhet av anpassningar av f&auml;rdtj&auml;nst, skolbuss, sjuktransport, funktionshindrade och specialfordon.</div>
+        <a class="company-link" href="https://bewaintraf.com" target="_blank">bewaintraf.com &rarr;</a>
+      </div>
+      <div class="company-row reveal">
+        <img class="company-thumb" src="https://www.terri.se/wp-content/uploads/TERRI-3CW-1-2250x1501.png" alt="Terri" loading="lazy"/>
+        <div class="company-name">Terri</div>
+        <div class="company-desc">Tillverkar skogsmaskiner (sk&ouml;rdare, skotare, kombimaskiner) i &Auml;lmhult f&ouml;r best&aring;ndsg&aring;ende gallring inom professionellt skogsbruk.</div>
+        <a class="company-link" href="https://terri.se" target="_blank">terri.se &rarr;</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-logo" data-page="home">INEV</div>
+    <div class="footer-links">
+      <a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a>
+      <a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a>
+    </div>
+  </footer>
+</div>
+
+<!-- PAGE: OM -->
+<div class="page" id="page-om">
+  <section class="section">
+    <div class="section-narrow">
+      <div class="section-label">Om oss</div>
+      <div class="om-intro-grid">
+        <h1 class="section-title reveal">Vi bygger<br>bolag f&ouml;r<br><em>framtiden.</em></h1>
+        <div>
+          <p class="body-text reveal">INEV &auml;r ett industriellt investmentbolag grundat 2017 av ett antal sm&aring;l&auml;ndska entrepren&ouml;rer. V&aring;r aff&auml;rsid&eacute; &auml;r att f&ouml;rv&auml;rva och &auml;ga bolag med god l&ouml;nsamhet och starka kassafl&ouml;den &mdash; utan exitstrategi. Vi har en tydlig teknikagenda vilket innefattar n&ouml;dv&auml;ndiga investeringar inom AI och robotisering f&ouml;r att s&auml;kerst&auml;lla att svensk tillverkningsindustri f&ouml;rblir slagkraftig.</p>
+          <p class="body-text reveal">Vi tror p&aring; aktivt engagemang och n&auml;ra samarbete med bolagsledningarna. Genom att tillf&ouml;ra erfarenhet, n&auml;tverk och kapital och driva teknikfr&auml;mjande initiativ hj&auml;lper vi bolagen att v&auml;xa och st&auml;rka sina positioner.</p>
+          <p class="body-text reveal">Med bas i J&ouml;nk&ouml;ping &auml;ger och driver vi idag elva portf&ouml;ljbolag med sammanlagt &ouml;ver 500 anst&auml;llda och int&auml;kter p&aring; &ouml;ver 1,5 miljarder kronor.</p>
+        </div>
+      </div>
+
+        <div class="values-grid" style="margin-top:3rem">
+          <div class="value-box reveal">
+            <div class="value-title">L&aring;ngsiktighet</div>
+            <div class="value-desc">Vi f&ouml;rv&auml;rvar f&ouml;r att beh&aring;lla. Ingen exitstrategi &mdash; vi bygger f&ouml;r kommande generationer.</div>
+          </div>
+          <div class="value-box reveal">
+            <div class="value-title">Entrepren&ouml;rskap</div>
+            <div class="value-desc">Vi v&auml;rdesätter f&ouml;retagarandan och st&ouml;djer ledningar som vill ta sina bolag till n&auml;sta niv&aring;.</div>
+          </div>
+          <div class="value-box reveal">
+            <div class="value-title">Specialisering</div>
+            <div class="value-desc">Varje bolag i portf&ouml;ljen &auml;r specialiserat p&aring; sin nisch &mdash; det ger styrka och konkurrensf&ouml;rdelar.</div>
+          </div>
+          <div class="value-box reveal">
+            <div class="value-title">Servicegrad</div>
+            <div class="value-desc">H&ouml;g servicegrad och kundn&ouml;jdhet &auml;r en gemensam n&auml;mnare f&ouml;r alla bolag vi &auml;ger.</div>
+          </div>
+          <div class="value-box reveal">
+            <div class="value-title">Ny teknik</div>
+            <div class="value-desc">Vi tror p&aring; vikten av att anamma ny teknik &mdash; implementering av AI och investeringar i robotisering &mdash; f&ouml;r att s&auml;kerst&auml;lla att v&aring;ra portf&ouml;ljbolag utvecklas med samtiden.</div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="section-narrow">
+        <div class="reveal">
+          <div class="section-label">Finansiell &ouml;versikt</div>
+          <table class="fin-table">
+            <thead>
+              <tr>
+                <th>Msek</th>
+                <th style="text-align:right">2023/24</th>
+                <th style="text-align:right">2022/23</th>
+                <th style="text-align:right">2021/22</th>
+                <th style="text-align:right">2020/21</th>
+                <th style="text-align:right">2019/20</th>
+                <th style="text-align:right">2018/19</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Int&auml;kter</td><td>1&nbsp;514</td><td>1&nbsp;485</td><td>1&nbsp;254</td><td>778</td><td>661</td><td>311</td></tr>
+              <tr><td>EBITDA</td><td>109</td><td>52</td><td>104</td><td>45</td><td>70</td><td>31</td></tr>
+              <tr><td>Resultat efter fin. poster</td><td>27</td><td>&minus;18</td><td>54</td><td>9</td><td>35</td><td>9</td></tr>
+              <tr><td>Balansomslutning</td><td>1&nbsp;093</td><td>1&nbsp;046</td><td>1&nbsp;046</td><td>762</td><td>513</td><td>394</td></tr>
+              <tr><td>Soliditet, %</td><td>36</td><td>35</td><td>32</td><td>33</td><td>39</td><td>45</td></tr>
+              <tr><td>Medelantal anst&auml;llda</td><td>527</td><td>544</td><td>494</td><td>295</td><td>216</td><td>91</td></tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-logo" data-page="home">INEV</div>
+    <div class="footer-links">
+      <a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a>
+      <a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a>
+    </div>
+  </footer>
+</div>
+
+<!-- PAGE: HISTORIK -->
+<div class="page" id="page-historik">
+  <div class="historik-hero">
+    <h1>F&ouml;rvarvshistorik<br><em>sedan 2017</em></h1>
+    <p>En resa av f&ouml;rv&auml;rv, tillv&auml;xt och l&aring;ngsiktigt byggande av en industriell koncern med r&ouml;tter i Sm&aring;land.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-year">2024</div>
+      <div class="tl-content">
+        <h3>Terri</h3>
+        <p>Tidigare underdivision till Alfing, nu eget bolag. Tillverkar skogsmaskiner (sk&ouml;rdare, skotare, kombimaskiner) f&ouml;r best&aring;ndsg&aring;ende gallring inom professionellt skogsbruk. Byggs i &Auml;lmhult.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2022</div>
+      <div class="tl-content">
+        <h3>Bewa Intraf</h3>
+        <p>F&ouml;rs&auml;ljning av specialfordon s&aring;som sjuktransport, skolbussar mm.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2021</div>
+      <div class="tl-content">
+        <h3>Stacke Hydraulik</h3>
+        <p>Utvecklar och tillverkar hydraulcylindrar.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2021</div>
+      <div class="tl-content">
+        <h3>Alfing</h3>
+        <p>Industrikoncern med tillverkning och f&ouml;rs&auml;ljning inom Alfing Produktion, Alfing Seating och Terri Skogsmaskiner.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2020</div>
+      <div class="tl-content">
+        <h3>Viking Beds of Sweden</h3>
+        <p>Tillverkning och f&ouml;rs&auml;ljning av s&auml;ngar och sovrumsm&ouml;bler.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2020</div>
+      <div class="tl-content">
+        <h3>Ripa Specialfordon (Ing&aring;r i Allt i Pl&aring;t)</h3>
+        <p>F&ouml;rs&auml;ljning av specialfordon s&aring;som ambulanser och bussar m.m.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2019</div>
+      <div class="tl-content">
+        <h3>GVM Gr&auml;sv&aring;rdsmaskiner</h3>
+        <p>S&auml;ljer professionell utrustning till kommun och bostadsr&auml;ttsf&ouml;reningar som golfklubbar inom gr&auml;sv&aring;rd.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2019</div>
+      <div class="tl-content">
+        <h3>Allt i Pl&aring;t</h3>
+        <p>Tillverkar och s&auml;ljer truckhytter samt genomf&ouml;r ombyggnad av fordon f&ouml;r special&auml;ndam&aring;l.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2018</div>
+      <div class="tl-content">
+        <h3>LT Office Line (Ing&aring;r i Lanab Group)</h3>
+        <p>Utvecklar och s&auml;ljer ergonomiska kontorsstolar.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2018</div>
+      <div class="tl-content">
+        <h3>GMA Ground Machinery Applications</h3>
+        <p>Utvecklar injektionssystem och bergf&ouml;rst&auml;rkning.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2017</div>
+      <div class="tl-content">
+        <h3>Walker Mowers Sweden</h3>
+        <p>S&auml;ljer professionella &aring;kgr&auml;sklippare.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2017</div>
+      <div class="tl-content">
+        <h3>Steelcenter Sweden</h3>
+        <p>S&auml;ljer industrikomponenter och rostfri pl&aring;t.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2017</div>
+      <div class="tl-content">
+        <h3>Lanab Group</h3>
+        <p>Utvecklar och s&auml;ljer ergonomiska kontorsm&ouml;bler.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-year">2017</div>
+      <div class="tl-content">
+        <h3>INEV grundas</h3>
+        <p>Industriell Evolution grundas i J&ouml;nk&ouml;ping av sm&aring;l&auml;ndska entrepren&ouml;rer med m&aring;let att bygga en l&aring;ngsiktig industriell koncern.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-logo" data-page="home">INEV</div>
+    <div class="footer-links">
+      <a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a>
+      <a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a>
+    </div>
+  </footer>
+</div>
+
+<!-- PAGE: KONTAKT -->
+<div class="page" id="page-kontakt">
+  <div class="kontakt-split">
+    <div class="kontakt-left">
+      <h1>Kontakta oss</h1>
+      <p>Vi &auml;r alltid intresserade av att h&ouml;ra fr&aring;n entrepren&ouml;rer, samarbetspartners och potentiella s&auml;ljare.</p>
+      <a href="mailto:info@inev.nu" class="btn btn-light" style="align-self:flex-start;margin-top:1rem">Skicka e-post</a>
+      <div class="address">
+        INEV AB<br>
+        &Ouml;stra Storgatan 13 B, 553 21 J&ouml;nk&ouml;ping<br>
+        Kungsgatan 8, 111 43 Stockholm<br>
+        info@inev.nu
+      </div>
+    </div>
+    <div class="kontakt-right">
+      <div class="person reveal">
+        <div class="person-avatar">
+          <img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div>
+          <div class="person-name">Per Rodert</div>
+          <div class="person-role">Styrelseordf&ouml;rande</div>
+          <div class="person-bio">Entrepren&ouml;r och grundare av INEV med lång erfarenhet av industriellt f&ouml;retagsbyggande i sm&aring;l&auml;ndsk tradition.</div>
+          <a href="mailto:per@inev.nu" class="person-email">per@inev.nu</a>
+        </div>
+      </div>
+      <div class="person reveal">
+        <div class="person-avatar">
+          <img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div>
+          <div class="person-name">Sebastian Andreescu</div>
+          <div class="person-role">VD</div>
+          <div class="person-bio">Erfarenhet fr&aring;n general management, finans och supply chain inom Oil &amp; Gas, tillverkningsindustri &ndash; senast som grundare och VD f&ouml;r Billhop &ndash; ett pan-europeiskt fintech-bolag som under 2025 f&ouml;rv&auml;rvades av det amerikanska fintech-bolaget Ramp.</div>
+          <a href="mailto:sebastian@inev.nu" class="person-email">sebastian@inev.nu</a>
+        </div>
+      </div>
+      <div class="person reveal">
+        <div class="person-avatar">
+          <img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div>
+          <div class="person-name">Ingemar Sj&ouml;gren</div>
+          <div class="person-role">Vice VD &amp; CFO</div>
+          <div class="person-bio">Erfarenhet fr&aring;n management consulting, investment banking, general management och finans inom tillverkningsindustri &ndash; senast som grundare och CFO f&ouml;r Billhop &ndash; ett pan-europeiskt fintech-bolag som under 2025 f&ouml;rv&auml;rvades av det amerikanska fintech-bolaget Ramp.</div>
+          <a href="mailto:ingemar@inev.nu" class="person-email">ingemar@inev.nu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-logo" data-page="home">INEV</div>
+    <div class="footer-links">
+      <a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a>
+      <a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // ── State ────────────────────────────────────────────────────────────────
+  var currentLang = 'sv';
+  var currentPage = 'home';
+  var mobileSV, mobileEN;
+
+  // ── Translations ─────────────────────────────────────────────────────────
+  var t = {
+    'nav.innehav':  {sv:'Innehav',    en:'Portfolio'},
+    'nav.om':       {sv:'Om INEV',    en:'About INEV'},
+    'nav.historik': {sv:'Historik',   en:'History'},
+    'nav.kontakt':  {sv:'Kontakt',    en:'Contact'},
+
+    'home.eyebrow':     {sv:'Grundat 2017 \u00b7 J\u00f6nk\u00f6ping, Sverige', en:'Founded 2017 \u00b7 J\u00f6nk\u00f6ping, Sweden'},
+    'home.title':       {sv:'Industriell<br><em>Evolution</em>', en:'Industrial<br><em>Evolution</em>'},
+    'home.body':        {sv:'INEV f\u00f6rv\u00e4rvar och utvecklar l\u00f6nsamma svenska bolag f\u00f6r att \u00e4ga dem \u2014 f\u00f6r alltid. Vi \u00e4r entrepren\u00f6rer som tror p\u00e5 decentraliserat ledarskap, starkt kassafl\u00f6de och implementering av ny teknik f\u00f6r att utvecklas med samtiden och s\u00e4kerst\u00e4lla svensk konkurrenskraft.',
+                         en:'INEV acquires and develops profitable Swedish companies with an evergreen investment horizon. We are entrepreneurs who believe in decentralised leadership, strong cash flow, and the continuous implementation of new technology to stay relevant and ensure Swedish industrial competitiveness.'},
+    'home.cta.innehav': {sv:'V\u00e5ra innehav',   en:'Our portfolio'},
+    'home.cta.om':      {sv:'Om oss',            en:'About us'},
+    'home.stat.rev':    {sv:'Int\u00e4kter 2025', en:'Revenue 2025'},
+    'home.stat.emp':    {sv:'Anst\u00e4llda',     en:'Employees'},
+    'home.stat.port':   {sv:'Portf\u00f6ljbolag', en:'Portfolio companies'},
+
+    'home.om.label':  {sv:'Om INEV', en:'About INEV'},
+    'home.om.title':  {sv:'Kombinationen av erfarenhet och nyfikenhet skapar<br><em>verkligt v\u00e4rde.</em>',
+                       en:'The combination of experience and curiosity creates<br><em>real value.</em>'},
+    'home.om.btn':    {sv:'L\u00e4s mer om oss', en:'Read more about us'},
+    'home.om.body':   {sv:'Bakom INEV st\u00e5r ett antal entrepren\u00f6rer som vill s\u00e4kerst\u00e4lla svensk konkurrenskraft i en alltj\u00e4mt f\u00f6r\u00e4nderlig v\u00e4rld. Genom n\u00e4ra samarbete med bolagsledningar bidrar vi med strategisk kompetens, n\u00e4tverk, kapital och hj\u00e4lp med att implementera ny teknik.',
+                       en:'INEV is founded by a group of entrepreneurs committed to ensuring Swedish industrial competitiveness in an ever-changing world. Through close collaboration with management teams, we contribute strategic expertise, networks, capital, and support in implementing new technology.'},
+    'home.pill.1':    {sv:'F\u00f6rv\u00e4rv',      en:'Acquisitions'},
+    'home.pill.2':    {sv:'Industri',      en:'Industry'},
+    'home.pill.3':    {sv:'Handel',        en:'Commerce'},
+    'home.pill.4':    {sv:'L\u00e5ngsiktighet', en:'Long-term'},
+
+    'home.carousel.label': {sv:'Urval',    en:'Selection'},
+    'home.carousel.title': {sv:'Bolag vi<br><em>tror p\u00e5.</em>', en:'Companies we<br><em>believe in.</em>'},
+    'home.carousel.body':  {sv:'Vi f\u00f6rv\u00e4rvar f\u00f6retag med god l\u00f6nsamhet och ett starkt kassafl\u00f6de d\u00e4r vi med engagemang, kompetens och investeringsvilja kan bist\u00e5 i den naturliga utvecklingen som industrin st\u00e5r inf\u00f6r.',
+                             en:'We acquire companies with solid profitability and strong cash flow where our engagement, expertise, and willingness to invest in new technology supports the natural evolution of the manufacturing industry.'},
+    'home.carousel.btn':   {sv:'Se alla bolag', en:'See all companies'},
+    'home.carousel.visit': {sv:'Bes\u00f6k webbplats \u2192', en:'Visit website \u2192'},
+
+    'cta.title': {sv:'Vill du s\u00e4lja ditt bolag?', en:'Looking to sell your company?'},
+    'cta.body':  {sv:'Vi \u00e4r alltid intresserade av att tr\u00e4ffa duktiga entrepren\u00f6rer med v\u00e4lsk\u00f6tta verksamheter.',
+                  en:'We are always interested in meeting skilled entrepreneurs with well-run businesses.'},
+    'cta.btn':   {sv:'Ta kontakt', en:'Get in touch'},
+
+    'footer.innehav':  {sv:'Innehav',  en:'Portfolio'},
+    'footer.om':       {sv:'Om INEV',  en:'About INEV'},
+    'footer.historik': {sv:'Historik', en:'History'},
+    'footer.kontakt':  {sv:'Kontakt',  en:'Contact'},
+
+    'innehav.label': {sv:'Portf\u00f6lj', en:'Portfolio'},
+    'innehav.title': {sv:'V\u00e5ra<br><em>innehav.</em>', en:'Our<br><em>holdings.</em>'},
+    'innehav.body':  {sv:'Elva bolag inom tillverkning, handel och tj\u00e4nster \u2014 alla med starka marknadspositioner och erfarna ledningar.',
+                      en:'Eleven companies in manufacturing, commerce, and services \u2014 all with strong market positions and experienced management teams.'},
+    'cat.metall':  {sv:'Tillverkning &amp; Bearbetning av Metall', en:'Metal Manufacturing &amp; Processing'},
+    'cat.gron':    {sv:'Gr\u00f6nyteskötsel', en:'Grounds Maintenance'},
+    'cat.mobler':  {sv:'M\u00f6bler', en:'Furniture'},
+    'cat.fordon':  {sv:'Fordon', en:'Vehicles'},
+
+    'c.alfing.desc':  {sv:'Alfing Produktion erbjuder ett helhetskoncept f\u00f6r v\u00e4ldefinierade kunder. Alfing Seating tillverkar och s\u00e4ljer stolar f\u00f6r offentlig milj\u00f6.',
+                       en:'Alfing Produktion offers a complete concept for well-defined customers. Alfing Seating manufactures and sells chairs for public environments.'},
+    'c.aip.desc':     {sv:'Tillverkar hytter till tunga fordon och genomf\u00f6r fordonsanpassningar f\u00f6r industrin.',
+                       en:'Manufactures operator cabs for heavy vehicles and performs vehicle conversions for industry.'},
+    'c.gma.desc':     {sv:'Producerar packers och injektionsutrustning f\u00f6r gruv- och infrastrukturprojekt.',
+                       en:'Produces packers and injection equipment for mining and infrastructure projects.'},
+    'c.stacke.desc':  {sv:'Utvecklar och tillverkar hydraulcylindrar f\u00f6r kr\u00e4vande industriella till\u00e4mpningar.',
+                       en:'Develops and manufactures hydraulic cylinders for demanding industrial applications.'},
+    'c.steel.desc':   {sv:'S\u00e4ljer industrikomponenter och rostfri pl\u00e5t till industriella kunder.',
+                       en:'Sells industrial components and stainless steel sheet to industrial customers.'},
+    'c.gvm.desc':     {sv:'S\u00e4ljer professionell utrustning f\u00f6r gr\u00f6nyteskötsel till kommuner, bostadsr\u00e4ttsf\u00f6reningar och golfklubbar.',
+                       en:'Sells professional grounds maintenance equipment to municipalities, housing associations, and golf clubs.'},
+    'c.walker.desc':  {sv:'S\u00e4ljer professionella \u00e5kgr\u00e4sklippare f\u00f6r kommuner, golfbanor och fastighetssk\u00f6tsel.',
+                       en:'Sells professional ride-on lawn mowers for municipalities, golf courses, and property maintenance.'},
+    'c.lanab.desc':   {sv:'Utvecklar och s\u00e4ljer ergonomiska kontorsm\u00f6bler och kontorsstolar.',
+                       en:'Develops and sells ergonomic office furniture and office chairs.'},
+    'c.viking.desc':  {sv:'Tillverkning och f\u00f6rs\u00e4ljning av s\u00e4ngar och sovrumsm\u00f6bler i h\u00f6g kvalitet.',
+                       en:'Manufacturing and sales of high-quality beds and bedroom furniture.'},
+    'c.bewa.desc':    {sv:'Anpassar fordon f\u00f6r s\u00e4rskilda anv\u00e4ndningsomr\u00e5den, exempelvis f\u00e4rdtj\u00e4nst, skolskjuts och transport\u00f6r kriminalv\u00e5rden.',
+                       en:'Converts vehicles for special use cases, including mobility transport, school transport, and prisoner transport for correctional facilities.'},
+    'c.terri.desc':   {sv:'Tillverkar kraftfulla skogsmaskiner f\u00f6r professionellt skogsbruk \u2014 sk\u00f6rdare, skotare och kombimaskiner.',
+                       en:'Manufactures powerful forestry machines for professional forestry \u2014 harvesters, forwarders, and combination machines.'},
+
+    'om.label': {sv:'Om oss', en:'About us'},
+    'om.title': {sv:'Vi \u00e4r<br><em>l\u00e5ngsiktiga.</em>', en:'We are<br><em>long-term.</em>'},
+    'om.p1': {sv:'INEV grundades 2017 med ambitionen att bygga en svensk industrigrupp f\u00f6r framtiden. Vi f\u00f6rv\u00e4rvar l\u00f6nsamma bolag med starka marknadspositioner \u2014 och f\u00f6r alltid.',
+              en:'INEV was founded in 2017 with the ambition to build a Swedish industrial group for the future. We acquire profitable companies with strong market positions \u2014 and for good.'},
+    'om.p2': {sv:'Vi tror p\u00e5 decentraliserat ledarskap \u2014 bolagens ledningar f\u00e5r mandat att driva sina verksamheter sj\u00e4lva, med st\u00f6d fr\u00e5n oss n\u00e4r det beh\u00f6vs. V\u00e5r roll \u00e4r att vara en engagerad \u00e4gare som bidrar med kapital, kompetens och n\u00e4tverk.',
+              en:'We believe in decentralised leadership \u2014 management teams are empowered to run their businesses independently, with our support when needed. Our role is to be an engaged owner contributing capital, expertise, and network.'},
+    'om.p3': {sv:'Portf\u00f6ljen sp\u00e4nner \u00f6ver tillverkning, handel och tj\u00e4nster \u2014 bolag som \u00e4r specialiserade inom sina nischer och som har visat f\u00f6rm\u00e5ga att generera stabila kassafl\u00f6den \u00f6ver tid.',
+              en:'The portfolio spans manufacturing, commerce, and services \u2014 companies that are specialised within their niches and have demonstrated the ability to generate stable cash flows over time.'},
+    'val.longsikt.title': {sv:'L\u00e5ngsiktighet', en:'Long-term'},
+    'val.longsikt.desc':  {sv:'Vi f\u00f6rv\u00e4rvar f\u00f6r att \u00e4ga, inte f\u00f6r att s\u00e4lja. V\u00e5ra bolag f\u00e5r arbeta med ett tidsl\u00f6st perspektiv.',
+                           en:'We acquire to own, not to sell. Our companies can work with a timeless perspective.'},
+    'val.entr.title': {sv:'Entrepren\u00f6rskap', en:'Entrepreneurship'},
+    'val.entr.desc':  {sv:'Vi tror p\u00e5 m\u00e4nniskor som bygger f\u00f6retag och ger dem utrymme att forts\u00e4tta g\u00f6ra det.',
+                       en:'We believe in people who build companies and give them room to keep doing so.'},
+    'val.spec.title': {sv:'Specialisering', en:'Specialisation'},
+    'val.spec.desc':  {sv:'Djup kompetens inom en nisch sl\u00e5r bred generalism. Vi s\u00f6ker bolag som \u00e4r b\u00e4st p\u00e5 det de g\u00f6r.',
+                       en:'Deep expertise in a niche beats broad generalism. We look for companies that are best at what they do.'},
+    'val.serv.title': {sv:'Servicegrad', en:'Service quality'},
+    'val.serv.desc':  {sv:'H\u00f6g servicegrad och n\u00e4ra kundrelationer \u00e4r fundamentet i alla v\u00e5ra bolag.',
+                       en:'High service quality and close customer relationships are the foundation of all our companies.'},
+    'val.tek.title': {sv:'Ny teknik', en:'New technology'},
+    'val.tek.desc':  {sv:'Vi investerar aktivt i ny teknik f\u00f6r att s\u00e4kerst\u00e4lla att v\u00e5ra bolag f\u00f6rblir konkurrenskraftiga.',
+                      en:'We actively invest in new technology to ensure our companies remain competitive.'},
+    'om.fin.label': {sv:'Finansiell \u00f6versikt', en:'Financial overview'},
+    'om.fin.rev':   {sv:'Int\u00e4kter',           en:'Revenue'},
+    'om.fin.res':   {sv:'Resultat efter fin. poster', en:'Result after fin. items'},
+    'om.fin.bal':   {sv:'Balansomslutning',        en:'Total assets'},
+    'om.fin.sol':   {sv:'Soliditet, %',            en:'Equity ratio, %'},
+    'om.fin.emp':   {sv:'Medelantal anst\u00e4llda', en:'Avg. employees'},
+
+    'hist.title': {sv:'F\u00f6rvarvshistorik<br><em>sedan 2017</em>', en:'Acquisition history<br><em>since 2017</em>'},
+    'hist.sub':   {sv:'En resa av f\u00f6rv\u00e4rv, tillv\u00e4xt och l\u00e5ngsiktigt byggande av en industriell koncern med r\u00f6tter i Sm\u00e5land.', en:'A journey of acquisitions, growth and long-term building of an industrial group rooted in Sm\u00e5land.'},
+    'tl.terri':   {sv:'Terri, tidigare en underdivision till Alfing, etableras som ett eget bolag inom INEV-koncernen. Terri tillverkar kraftfulla och smidiga skogsmaskiner, sk\u00f6rdare, skotare och kombimaskiner, f\u00f6r professionellt och h\u00e5llbart skogsbruk, speciellt anpassade f\u00f6r best\u00e5ndsg\u00e5ende gallring med minimala markskador. Maskinerna byggs i \u00c4lmhult.',
+                   en:'Terri, previously a sub-division of Alfing, is established as a standalone company within the INEV group. Terri manufactures powerful and agile forestry machines \u2014 harvesters, forwarders and combined machines \u2014 for professional and sustainable forestry, specially designed for selective thinning with minimal ground damage. The machines are built in \u00c4lmhult.'},
+    'tl.bewa':    {sv:'F\u00f6rv\u00e4rv av Bewa Intraf, specialist p\u00e5 fordonsanpassningar f\u00f6r s\u00e4rskilda anv\u00e4ndningsomr\u00e5den.',
+                   en:'Acquisition of Bewa Intraf, specialist in vehicle conversions for special use cases.'},
+    'tl.stacke':  {sv:'F\u00f6rv\u00e4rv av Stacke Hydraulik, tillverkare av hydraulcylindrar.',
+                   en:'Acquisition of Stacke Hydraulik, manufacturer of hydraulic cylinders.'},
+    'tl.alfing':  {sv:'F\u00f6rv\u00e4rv av Alfing, som verkar inom b\u00e5de kontorsm\u00f6bler och precisionsbearbetning.',
+                   en:'Acquisition of Alfing, operating in both office furniture and precision machining.'},
+    'tl.viking':  {sv:'F\u00f6rv\u00e4rv av Viking Beds of Sweden, tillverkare av kvalitetss\u00e4ngar.',
+                   en:'Acquisition of Viking Beds of Sweden, manufacturer of quality beds.'},
+    'tl.ripa':    {sv:'F\u00f6rv\u00e4rv av Ripa Specialfordon, f\u00f6rs\u00e4ljning av specialfordon s\u00e5som ambulanser och bussar m.m.',
+                   en:'Acquisition of Ripa Specialfordon, sales of special-purpose vehicles including ambulances and buses.'},
+    'tl.gvm':     {sv:'F\u00f6rv\u00e4rv av GVM, distributör av gr\u00f6nyteskötselutrustning.',
+                   en:'Acquisition of GVM, distributor of grounds maintenance equipment.'},
+    'tl.aip':     {sv:'F\u00f6rv\u00e4rv av Allt i Pl\u00e5t, tillverkare av pl\u00e5tkabinetter.',
+                   en:'Acquisition of Allt i Pl\u00e5t, manufacturer of operator cabs for heavy vehicles.'},
+    'tl.lt':      {sv:'F\u00f6rv\u00e4rv av Lanab Group, tillverkare av ergonomiska kontorsm\u00f6bler.',
+                   en:'Acquisition of Lanab Group, manufacturer of ergonomic office furniture.'},
+    'tl.gma':     {sv:'F\u00f6rv\u00e4rv av GMA, tillverkare av packers och injektionsutrustning f\u00f6r gruv- och infrastrukturprojekt.',
+                   en:'Acquisition of GMA, manufacturer of packers and injection equipment for mining and infrastructure projects.'},
+    'tl.walker':  {sv:'F\u00f6rv\u00e4rv av Walker Mowers Sweden, distributör av professionella gr\u00e4sklippare.',
+                   en:'Acquisition of Walker Mowers Sweden, distributor of professional lawn mowers.'},
+    'tl.steel':   {sv:'F\u00f6rv\u00e4rv av Steelcenter, distributör av rostfria st\u00e5lprodukter.',
+                   en:'Acquisition of Steelcenter, distributor of stainless steel products.'},
+    'tl.lanab':   {sv:'F\u00f6rsta f\u00f6rv\u00e4rvet, Lanab, lade grunden f\u00f6r industrigruppen.',
+                   en:'First acquisition, Lanab, laid the foundation of the industrial group.'},
+    'tl.founded': {sv:'INEV Industriell Evolution AB grundas i J\u00f6nk\u00f6ping med ambitionen att bygga en svensk industrigrupp.',
+                   en:'INEV Industriell Evolution AB is founded in J\u00f6nk\u00f6ping with the ambition to build a Swedish industrial group.'},
+
+    'kontakt.title':    {sv:'Kontakta oss', en:'Contact us'},
+    'kontakt.body':     {sv:'Vi \u00e4r alltid intresserade av att h\u00f6ra fr\u00e5n entrepren\u00f6rer, samarbetspartners och potentiella s\u00e4ljare.',
+                         en:'We are always interested in hearing from entrepreneurs, partners and potential sellers.'},
+    'kontakt.email.btn':{sv:'info@inev.nu', en:'info@inev.nu'},
+    'per.role':  {sv:'Styrelseordf\u00f6rande', en:'Chairman of the Board'},
+    'per.bio':   {sv:'Entrepren\u00f6r och grundare av INEV med l\u00e5ng erfarenhet av industriellt f\u00f6retagsbyggande i sm\u00e5l\u00e4ndsk tradition.',
+                  en:'Entrepreneur and founder of INEV with extensive experience in industrial company building in the tradition of Sm\u00e5land.'},
+    'seb.role':  {sv:'VD', en:'CEO'},
+    'seb.bio':   {sv:'Erfarenhet fr\u00e5n general management, finans och supply chain inom oil & gas, tillverkningsindustri \u2013 senast som grundare och VD f\u00f6r Billhop \u2013 ett pan-europeiskt fintech-bolag som under 2025 f\u00f6rv\u00e4rvades av det amerikanska fintech-bolaget Ramp.',
+                  en:'Background in general management, finance and supply chain within oil & gas and manufacturing \u2013 most recently as co-founder and CEO of Billhop \u2013 a pan-European fintech company acquired in 2025 by US fintech company Ramp.'},
+    'ing.role':  {sv:'Vice VD &amp; CFO', en:'Deputy CEO &amp; CFO'},
+    'ing.bio':   {sv:'Erfarenhet fr\u00e5n management consulting, investment banking, general management och finans inom tillverkningsindustri \u2013 senast som grundare och CFO f\u00f6r Billhop \u2013 ett pan-europeiskt fintech-bolag som under 2025 f\u00f6rv\u00e4rvades av det amerikanska fintech-bolaget Ramp.',
+                  en:'Background in management consulting, investment banking, general management and finance within manufacturing \u2013 most recently as co-founder and CFO of Billhop \u2013 a pan-European fintech company acquired in 2025 by US fintech company Ramp.'}
+  };
+
+  function T(key) {
+    var e = t[key];
+    if (!e) return key;
+    return e[currentLang] || e['sv'];
+  }
+
+  // ── Carousel data ────────────────────────────────────────────────────────
+  var carouselKeys = [
+    {name:'Alfing',                desc:'c.alfing.desc', url:'https://alfingproduktion.se'},
+    {name:'Allt i Pl\u00e5t',      desc:'c.aip.desc',   url:'https://alltiplat.se'},
+    {name:'Bewa Intraf',           desc:'c.bewa.desc',   url:'https://bewaintraf.se'},
+    {name:'GMA',                   desc:'c.gma.desc',    url:'https://gma.se'},
+    {name:'GVM Gr\u00e4sv\u00e5rdsmaskiner', desc:'c.gvm.desc', url:'https://grasvardsmaskiner.se'},
+    {name:'Lanab Group',           desc:'c.lanab.desc',  url:'https://lanabgroup.se'},
+    {name:'Stacke Hydraulik',      desc:'c.stacke.desc', url:'https://stackehydraulik.com'},
+    {name:'Steelcenter',           desc:'c.steel.desc',  url:'https://steelcenter.se'},
+    {name:'Terri',                 desc:'c.terri.desc',  url:'https://terri.se'},
+    {name:'Viking Beds of Sweden', desc:'c.viking.desc', url:'https://vikingbeds.se'},
+    {name:'Walker Mowers Sweden',  desc:'c.walker.desc', url:'https://walkermowers.se'}
+  ];
+  var carouselIdx = 0;
+
+  function renderCarousel() {
+    var track = document.getElementById('carouselTrack');
+    var counter = document.getElementById('carouselCounter');
+    if (!track) return;
+    var perPage = 3;
+    var total = carouselKeys.length;
+    var html = '';
+    for (var j = 0; j < perPage; j++) {
+      var b = carouselKeys[(carouselIdx + j) % total];
+      html += '<div class="carousel-card">' +
+        '<div class="card-name">' + b.name + '</div>' +
+        '<div class="card-desc">' + T(b.desc) + '</div>' +
+        '<a class="card-arrow" href="' + b.url + '" target="_blank">' + T('home.carousel.visit') + '</a>' +
+        '</div>';
+    }
+    track.innerHTML = html;
+    if (counter) {
+      counter.textContent = (carouselIdx + 1) + '\u2013' + Math.min(carouselIdx + perPage, total) + ' / ' + total;
+    }
+  }
+
+  // ── Navigate pages ────────────────────────────────────────────────────────
+  function navigate(pageId) {
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    var target = document.getElementById('page-' + pageId);
+    if (target) target.classList.add('active');
+    currentPage = pageId;
+    document.querySelectorAll('.nav-links a').forEach(function(a){
+      a.classList.toggle('active-link', a.getAttribute('data-page') === pageId);
+    });
+    window.scrollTo(0, 0);
+    initReveals();
+  }
+
+  // ── Scroll reveals ────────────────────────────────────────────────────────
+  function initReveals() {
+    var els = document.querySelectorAll('.reveal:not(.visible)');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, {threshold:0.1});
+    els.forEach(function(el){ obs.observe(el); });
+    setTimeout(function(){
+      document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){ el.classList.add('visible'); });
+    }, 80);
+  }
+
+  // ── Apply language ────────────────────────────────────────────────────────
+  function applyLang(lang) {
+    currentLang = lang;
+
+    // Toggle UI
+    var svEl = document.getElementById('langSV');
+    var enEl = document.getElementById('langEN');
+    if (svEl) svEl.className = lang === 'sv' ? 'lang-active' : '';
+    if (enEl) enEl.className = lang === 'en' ? 'lang-active' : '';
+
+    document.documentElement.lang = lang;
+    document.title = lang === 'sv' ? 'INEV \u2013 Industriell Evolution' : 'INEV \u2013 Industrial Evolution';
+
+    // Nav
+    // Update mobile menu link texts
+    document.querySelectorAll('#mobileMenu a[data-page]').forEach(function(a){
+      var pg = a.getAttribute('data-page');
+      var map = {innehav:'nav.innehav', om:'nav.om', historik:'nav.historik', kontakt:'nav.kontakt'};
+      if (map[pg]) a.textContent = T(map[pg]);
+    });
+    // Mobile lang active state
+    var mSV = document.getElementById('mobileLangSV');
+    var mEN = document.getElementById('mobileLangEN');
+    if (mSV) { mSV.style.fontWeight = lang==='sv'?'600':'400'; mSV.style.opacity = lang==='sv'?'1':'.4'; }
+    if (mEN) { mEN.style.fontWeight = lang==='en'?'600':'400'; mEN.style.opacity = lang==='en'?'1':'.4'; }
+
+    document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
+      var pg = a.getAttribute('data-page');
+      var map = {innehav:'nav.innehav', om:'nav.om', historik:'nav.historik', kontakt:'nav.kontakt'};
+      if (map[pg]) a.textContent = T(map[pg]);
+    });
+
+    // All footer links
+    document.querySelectorAll('.footer-links a[data-page]').forEach(function(a){
+      var pg = a.getAttribute('data-page');
+      var map = {innehav:'footer.innehav', om:'footer.om', historik:'footer.historik', kontakt:'footer.kontakt'};
+      if (map[pg]) a.textContent = T(map[pg]);
+    });
+
+    // HOME
+    var he = document.querySelector('.hero-eyebrow');
+    if (he) he.textContent = T('home.eyebrow');
+    var ht = document.querySelector('.hero-title');
+    if (ht) ht.innerHTML = T('home.title');
+    var hb = document.querySelector('.hero-body');
+    if (hb) hb.textContent = T('home.body');
+    document.querySelectorAll('.hero-cta button[data-page]').forEach(function(b){
+      if (b.getAttribute('data-page')==='innehav') b.textContent = T('home.cta.innehav');
+      if (b.getAttribute('data-page')==='om') b.textContent = T('home.cta.om');
+    });
+    var stats = document.querySelectorAll('.stat-label, .mini-lbl');
+    if (stats[0]) stats[0].textContent = T('home.stat.rev');
+    if (stats[1]) stats[1].textContent = T('home.stat.emp');
+    if (stats[2]) stats[2].textContent = T('home.stat.port');
+
+    var omLabel = document.getElementById('omLabel');
+    if (omLabel) omLabel.textContent = T('home.om.label');
+    var omTitle = document.getElementById('omTitle');
+    if (omTitle) omTitle.innerHTML = T('home.om.title');
+    var omBtn = document.getElementById('omBtn');
+    if (omBtn) omBtn.textContent = T('home.om.btn');
+    var omBody = document.getElementById('omBody');
+    if (omBody) omBody.textContent = T('home.om.body');
+    var pills = document.querySelectorAll('#page-home .pill');
+    ['home.pill.1','home.pill.2','home.pill.3','home.pill.4'].forEach(function(k,i){ if(pills[i]) pills[i].textContent = T(k); });
+
+    var carSection = document.querySelector('#page-home .section:last-of-type');
+    var carLabel = document.getElementById('carouselLabel');
+    if (carLabel) carLabel.textContent = T('home.carousel.label');
+    var carTitle = document.getElementById('carouselTitle');
+    if (carTitle) carTitle.innerHTML = T('home.carousel.title');
+    var carBodyEl = document.getElementById('carouselBody');
+    if (carBodyEl) carBodyEl.textContent = T('home.carousel.body');
+    var carBtn = document.getElementById('carouselBtn');
+    if (carBtn) carBtn.textContent = T('home.carousel.btn');
+    var ctaH2 = document.querySelector('.cta-band h2');
+    if (ctaH2) ctaH2.textContent = T('cta.title');
+    var ctaP = document.querySelector('.cta-band p');
+    if (ctaP) ctaP.textContent = T('cta.body');
+    var ctaBtn = document.querySelector('.cta-band button');
+    if (ctaBtn) ctaBtn.textContent = T('cta.btn');
+
+    // Re-render carousel with new language
+    renderCarousel();
+
+    // INNEHAV
+    var inhLabel = document.querySelector('#page-innehav .section-label');
+    if (inhLabel) inhLabel.textContent = T('innehav.label');
+    var inhTitle = document.querySelector('#page-innehav .section-title');
+    if (inhTitle) inhTitle.innerHTML = T('innehav.title');
+    var inhBody = document.querySelector('#page-innehav .body-text');
+    if (inhBody) inhBody.textContent = T('innehav.body');
+    var catHdrs = document.querySelectorAll('#page-innehav .category-header');
+    ['cat.metall','cat.gron','cat.mobler','cat.fordon'].forEach(function(k,i){ if(catHdrs[i]) catHdrs[i].innerHTML = T(k); });
+    var compDescs = document.querySelectorAll('#page-innehav .company-desc');
+    ['c.alfing.desc','c.aip.desc','c.gma.desc','c.stacke.desc','c.steel.desc','c.gvm.desc','c.walker.desc','c.lanab.desc','c.viking.desc','c.bewa.desc','c.terri.desc'].forEach(function(k,i){ if(compDescs[i]) compDescs[i].textContent = T(k); });
+    document.querySelectorAll('#page-innehav .company-link').forEach(function(a){ a.textContent = T('home.carousel.visit'); });
+
+    // OM
+    var omPgLabel = document.querySelector('#page-om .section-label');
+    if (omPgLabel) omPgLabel.textContent = T('om.label');
+    var omPgTitle = document.querySelector('#page-om .section-title');
+    if (omPgTitle) omPgTitle.innerHTML = T('om.title');
+    var omBodies = document.querySelectorAll('#page-om .body-text');
+    if (omBodies[0]) omBodies[0].textContent = T('om.p1');
+    if (omBodies[1]) omBodies[1].textContent = T('om.p2');
+    if (omBodies[2]) omBodies[2].textContent = T('om.p3');
+    var valTitles = document.querySelectorAll('.value-title');
+    var valDescs  = document.querySelectorAll('.value-desc');
+    ['val.longsikt.title','val.entr.title','val.spec.title','val.serv.title','val.tek.title'].forEach(function(k,i){ if(valTitles[i]) valTitles[i].textContent = T(k); });
+    ['val.longsikt.desc','val.entr.desc','val.spec.desc','val.serv.desc','val.tek.desc'].forEach(function(k,i){ if(valDescs[i]) valDescs[i].textContent = T(k); });
+    var finLabels = document.querySelectorAll('#page-om .section-label');
+    if (finLabels[1]) finLabels[1].textContent = T('om.fin.label');
+    var finRows = document.querySelectorAll('#page-om .fin-table tbody tr td:first-child');
+    ['om.fin.rev','EBITDA','om.fin.res','om.fin.bal','om.fin.sol','om.fin.emp'].forEach(function(k,i){ if(finRows[i] && t[k]) finRows[i].textContent = T(k); });
+
+    // HISTORIK
+    var histH1 = document.querySelector('.historik-hero h1');
+    if (histH1) histH1.innerHTML = T('hist.title');
+    var histSub = document.querySelector('.historik-hero p');
+    if (histSub) histSub.textContent = T('hist.sub');
+    var tlItems = document.querySelectorAll('.tl-content p');
+    ['tl.terri','tl.bewa','tl.stacke','tl.alfing','tl.viking','tl.ripa','tl.gvm','tl.aip','tl.lt','tl.gma','tl.walker','tl.steel','tl.lanab','tl.founded'].forEach(function(k,i){ if(tlItems[i]) tlItems[i].textContent = T(k); });
+
+    // KONTAKT
+    var kH1 = document.querySelector('.kontakt-left h1');
+    if (kH1) kH1.textContent = T('kontakt.title');
+    var kP = document.querySelector('.kontakt-left > p');
+    if (kP) kP.textContent = T('kontakt.body');
+    var persons = document.querySelectorAll('.person');
+    if (persons[0]) { persons[0].querySelector('.person-role').textContent = T('per.role'); persons[0].querySelector('.person-bio').textContent = T('per.bio'); }
+    if (persons[1]) { persons[1].querySelector('.person-role').textContent = T('seb.role'); persons[1].querySelector('.person-bio').textContent = T('seb.bio'); }
+    if (persons[2]) { persons[2].querySelector('.person-role').innerHTML = T('ing.role'); persons[2].querySelector('.person-bio').textContent = T('ing.bio'); }
+  }
+
+  // ── Init (runs after DOM is ready) ────────────────────────────────────────
+  function init() {
+    // Wire up all data-page click handlers
+    document.body.addEventListener('click', function(e){
+      var el = e.target.closest('[data-page]');
+      if (el) { e.preventDefault(); navigate(el.getAttribute('data-page')); }
+    });
+
+    // Lang toggle
+    // Mobile lang toggles
+    var mobileSVBtn = document.getElementById('mobileLangSV');
+    var mobileENBtn = document.getElementById('mobileLangEN');
+    if (mobileSVBtn) mobileSVBtn.addEventListener('click', function(){ currentLang='sv'; applyLang('sv'); });
+    if (mobileENBtn) mobileENBtn.addEventListener('click', function(){ currentLang='en'; applyLang('en'); });
+
+    var toggle = document.getElementById('langToggle');
+    if (toggle) {
+      toggle.addEventListener('click', function(){
+        var next = currentLang === 'sv' ? 'en' : 'sv';
+        currentLang = next; // update before applyLang
+        applyLang(next);
+        var newPath = next === 'en' ? '/en' : '/';
+        try { if (window.location.pathname !== newPath) history.pushState({lang: next}, '', newPath); } catch(e){}
+      });
+    }
+
+    // Browser back/forward
+    window.addEventListener('popstate', function(){
+      var lang = window.location.pathname.indexOf('/en') === 0 ? 'en' : 'sv';
+      applyLang(lang);
+    });
+
+    // Render carousel
+    renderCarousel();
+    var prevBtn = document.getElementById('carouselPrev');
+    var nextBtn = document.getElementById('carouselNext');
+    if (prevBtn) prevBtn.addEventListener('click', function(){ carouselIdx = (carouselIdx - 3 + carouselKeys.length) % carouselKeys.length; renderCarousel(); });
+    if (nextBtn) nextBtn.addEventListener('click', function(){ carouselIdx = (carouselIdx + 3) % carouselKeys.length; renderCarousel(); });
+
+    // Hamburger menu
+    var ham = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (ham && mobileMenu) {
+      ham.addEventListener('click', function() {
+        var open = mobileMenu.style.display === 'flex';
+        mobileMenu.style.display = open ? 'none' : 'flex';
+        ham.classList.toggle('is-open', !open);
+      });
+    }
+    // Close mobile menu on nav link click
+    document.querySelectorAll('#mobileMenu a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mobileMenu.style.display = 'none';
+        ham.classList.remove('is-open');
+      });
+    });
+
+    // Activate home
+    navigate('home');
+
+    // Apply default language (sv) to set all text correctly
+    applyLang('sv');
+
+    // Scroll reveals
+    initReveals();
+  }
+
+  // Run init — DOM is ready since script is at end of body
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+</body>
