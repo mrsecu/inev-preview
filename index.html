@@ -822,17 +822,17 @@ button{cursor:pointer;font-family:inherit}
 
   // ── Carousel data ────────────────────────────────────────────────────────
   var carouselKeys = [
-    {name:'Alfing',                desc:'c.alfing.desc', url:'https://alfingproduktion.se'},
-    {name:'Allt i Pl\u00e5t',      desc:'c.aip.desc',   url:'https://alltiplat.se'},
-    {name:'Bewa Intraf',           desc:'c.bewa.desc',   url:'https://bewaintraf.se'},
-    {name:'GMA',                   desc:'c.gma.desc',    url:'https://gma.se'},
-    {name:'GVM Gr\u00e4sv\u00e5rdsmaskiner', desc:'c.gvm.desc', url:'https://grasvardsmaskiner.se'},
-    {name:'Lanab Group',           desc:'c.lanab.desc',  url:'https://lanabgroup.se'},
-    {name:'Stacke Hydraulik',      desc:'c.stacke.desc', url:'https://stackehydraulik.com'},
-    {name:'Steelcenter',           desc:'c.steel.desc',  url:'https://steelcenter.se'},
-    {name:'Terri',                 desc:'c.terri.desc',  url:'https://terri.se'},
-    {name:'Viking Beds of Sweden', desc:'c.viking.desc', url:'https://vikingbeds.se'},
-    {name:'Walker Mowers Sweden',  desc:'c.walker.desc', url:'https://walkermowers.se'}
+    {name:'Alfing',                desc:'c.alfing.desc', url:'https://alfingproduktion.se', img:'https://www.alfingproduktion.se/wp-content/uploads/2024/06/alfingprod240326-17-scaled.jpg'},
+    {name:'Allt i Pl\u00e5t',      desc:'c.aip.desc',   url:'https://alltiplat.se',        img:'https://www.aip-cab.se/wp-content/uploads/aip_010921_162-2.jpg'},
+    {name:'Bewa Intraf',           desc:'c.bewa.desc',   url:'https://bewaintraf.se',       img:'https://bewaintraf.se/wp-content/uploads/2026/02/Toppbild.jpg'},
+    {name:'GMA',                   desc:'c.gma.desc',    url:'https://gma.se',              img:'https://www.gma.se/uploads/d4bcae27-0b27-4a49-9153-8f1e8593ac7b-Injektion_7_80.png'},
+    {name:'GVM Gr\u00e4sv\u00e5rdsmaskiner', desc:'c.gvm.desc', url:'https://grasvardsmaskiner.se', img:'https://grasvardsmaskiner.se/media/oawjsynb/97815f2f-65d9-4bf4-a332-7b4ba68d680f-belrobotics-bd_21-1-_2200.jpg'},
+    {name:'Lanab Group',           desc:'c.lanab.desc',  url:'https://lanabgroup.se',       img:'https://www.lanab.com/storage/7F17E0567482FD327DD4D28D0CDD41D4EB5D2354906827BC271CA203472A4665/2660c062d5a443a49a3ea7fb7d3233fb/webp/media/db50d04d3c8d4ecfb6f2bd5b8d9a893b/Lanab-hero-rashult.webp'},
+    {name:'Stacke Hydraulik',      desc:'c.stacke.desc', url:'https://stackehydraulik.com', img:'https://www.stackehydraulik.com/media/e4udrxhw/5920.jpg'},
+    {name:'Steelcenter',           desc:'c.steel.desc',  url:'https://steelcenter.se',      img:'https://steelcenter.se/media/jllkb51l/_47a7215-enhanced-nr.jpg'},
+    {name:'Terri',                 desc:'c.terri.desc',  url:'https://terri.se',            img:'https://www.terri.se/wp-content/uploads/TERRI-3CW-1-2250x1501.png'},
+    {name:'Viking Beds of Sweden', desc:'c.viking.desc', url:'https://vikingbeds.se',        img:'https://vikingbeds.se/wp-content/uploads/2024/06/Viking-beds-Villa-Skog15582-1-scaled.jpg'},
+    {name:'Walker Mowers Sweden',  desc:'c.walker.desc', url:'https://walkermowers.se',      img:'https://s3-eu-west-1.amazonaws.com/static.wm3.se/sites/352/media/112874_medium_A16-0004-1600.jpg'}
   ];
   var carouselIdx = 0;
 
@@ -846,6 +846,7 @@ button{cursor:pointer;font-family:inherit}
     for (var j = 0; j < perPage; j++) {
       var b = carouselKeys[(carouselIdx + j) % total];
       html += '<div class="carousel-card">' +
+        (b.img ? '<img src="' + b.img + '" alt="' + b.name + '" style="width:100%;height:160px;object-fit:cover;border-radius:2px;margin-bottom:.5rem" loading="lazy"/>' : '') +
         '<div class="card-name">' + b.name + '</div>' +
         '<div class="card-desc">' + T(b.desc) + '</div>' +
         '<a class="card-arrow" href="' + b.url + '" target="_blank">' + T('home.carousel.visit') + '</a>' +
