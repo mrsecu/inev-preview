@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
 <meta charset="UTF-8"/>
@@ -64,6 +64,9 @@ button{cursor:pointer;font-family:inherit}
 .section-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;opacity:.4;margin-bottom:1rem}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;font-weight:500;margin-bottom:2rem}
 .section-title em{font-style:italic;color:var(--rust)}
+#page-om .section-title{margin-bottom:.4rem}
+.om-section-sub{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--rust);opacity:.85;margin-bottom:2rem;line-height:1.4;font-weight:400}
+.fin-grid{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start}
 .body-text{font-size:1rem;opacity:.75;line-height:1.85;margin-bottom:1.3rem}
 .pill{display:inline-block;padding:.35rem .9rem;border:1px solid var(--stone);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin:.3rem .3rem 0 0;border-radius:2px}
 
@@ -163,6 +166,15 @@ button{cursor:pointer;font-family:inherit}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
 .reveal.visible{opacity:1;transform:none}
 
+/* CORNERSTONES */
+.cornerstones{display:flex;flex-direction:column;gap:0}
+.cornerstone{display:grid;grid-template-columns:280px 1fr;gap:2rem;padding:2rem 0;border-top:1px solid rgba(15,15,14,.12)}
+.cornerstone:last-child{border-bottom:1px solid rgba(15,15,14,.12)}
+.cornerstone-head{display:flex;align-items:baseline;gap:1rem}
+.cornerstone-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--rust);opacity:.6;line-height:1}
+.cornerstone-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink)}
+.cornerstone-desc{font-size:.88rem;font-weight:300;line-height:1.75;opacity:.65;color:var(--ink);padding-top:.2rem}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .nav{padding:1rem 1.5rem}
@@ -180,6 +192,8 @@ button{cursor:pointer;font-family:inherit}
   .company-desc{grid-column:2;font-size:.8rem;opacity:.65;display:block;margin-top:.1rem}
   .company-link{grid-column:2;text-align:left;font-size:.8rem}
   .values-grid{grid-template-columns:1fr}
+  .cornerstone{grid-template-columns:1fr;gap:.8rem}
+  .tek-points{grid-template-columns:1fr !important}
   .kontakt-split{grid-template-columns:1fr;grid-template-rows:auto auto}
   .kontakt-left,.kontakt-right{padding:3rem 1.5rem}
   .footer{grid-template-columns:1fr;gap:1rem}
@@ -194,6 +208,7 @@ button{cursor:pointer;font-family:inherit}
   .fin-table{font-size:.75rem}
   .fin-table th,.fin-table td{padding:.4rem .4rem}
   .om-intro-grid{grid-template-columns:1fr}
+  #page-om .fin-grid{grid-template-columns:1fr}
   .person{flex-direction:column;gap:1rem}
   .person-avatar{width:80px;height:80px}
 }
@@ -406,47 +421,139 @@ button{cursor:pointer;font-family:inherit}
 
 <!-- PAGE: OM -->
 <div class="page" id="page-om">
-  <section class="section">
+
+  <!-- INTRO -->
+  <section class="section" style="padding-bottom:3rem">
     <div class="section-narrow">
-      <div class="section-label">Om oss</div>
-      <div class="om-intro-grid">
-        <h1 class="section-title reveal">Vi bygger<br>bolag f&ouml;r<br><em>framtiden.</em></h1>
+      <div class="split reveal">
         <div>
-          <p class="body-text reveal">INEV &auml;r ett industriellt investmentbolag grundat 2017 av ett antal sm&aring;l&auml;ndska entrepren&ouml;rer. V&aring;r aff&auml;rsid&eacute; &auml;r att f&ouml;rv&auml;rva och &auml;ga bolag med god l&ouml;nsamhet och starka kassafl&ouml;den &mdash; utan exitstrategi. Vi har en tydlig teknikagenda vilket innefattar n&ouml;dv&auml;ndiga investeringar inom AI och robotisering f&ouml;r att s&auml;kerst&auml;lla att svensk tillverkningsindustri f&ouml;rblir slagkraftig.</p>
-          <p class="body-text reveal">Vi tror p&aring; aktivt engagemang och n&auml;ra samarbete med bolagsledningarna. Genom att tillf&ouml;ra erfarenhet, n&auml;tverk och kapital och driva teknikfr&auml;mjande initiativ hj&auml;lper vi bolagen att v&auml;xa och st&auml;rka sina positioner.</p>
-          <p class="body-text reveal">Med bas i J&ouml;nk&ouml;ping &auml;ger och driver vi idag elva portf&ouml;ljbolag med sammanlagt &ouml;ver 500 anst&auml;llda och int&auml;kter p&aring; &ouml;ver 1,5 miljarder kronor.</p>
+          <h2 class="section-title" id="omPageLabel">Om INEV</h2>
+          <p class="om-section-sub" id="omPageTitle">Industriell Evolution.</p>
+        </div>
+        <div>
+          <p class="body-text" id="omP1" style="font-size:.95rem;font-weight:300">INEV är en grupp entreprenörer med en gemensam övertygelse: att starka svenska bolag, rätt ägda och rätt rustade, kan vara konkurrenskraftiga i en värld som förändras snabbare än någonsin. Vi förvärvar och utvecklar lönsamma bolag för att äga dem &mdash; för alltid.</p>
+          <p class="body-text" id="omP2" style="font-size:.95rem;font-weight:300">Det nya ägarkollektivet vill fortsätta bygga vidare på INEVs ursprungliga ägarfilosofi genom ett aktivt engagemang, en accelererad implementation av ny teknik och en framåtlutat förvärvsagenda. Vi är övertygade om att starka svenska bolag, rätt ägda och rätt rustade, kan vara konkurrenskraftiga i en värld som förändras snabbare än någonsin.</p>
+          <p class="body-text" id="omP3" style="font-size:.95rem;font-weight:300">Med bas i Jönköping äger vi elva portföljbolag med sammanlagt över 500 anställda och intäkter på över 1,5 miljarder kronor.</p>
         </div>
       </div>
-
-        <div class="values-grid" style="margin-top:3rem">
-          <div class="value-box reveal">
-            <div class="value-title">L&aring;ngsiktighet</div>
-            <div class="value-desc">Vi f&ouml;rv&auml;rvar f&ouml;r att beh&aring;lla. Ingen exitstrategi &mdash; vi bygger f&ouml;r kommande generationer.</div>
-          </div>
-          <div class="value-box reveal">
-            <div class="value-title">Entrepren&ouml;rskap</div>
-            <div class="value-desc">Vi v&auml;rdesätter f&ouml;retagarandan och st&ouml;djer ledningar som vill ta sina bolag till n&auml;sta niv&aring;.</div>
-          </div>
-          <div class="value-box reveal">
-            <div class="value-title">Specialisering</div>
-            <div class="value-desc">Varje bolag i portf&ouml;ljen &auml;r specialiserat p&aring; sin nisch &mdash; det ger styrka och konkurrensf&ouml;rdelar.</div>
-          </div>
-          <div class="value-box reveal">
-            <div class="value-title">Servicegrad</div>
-            <div class="value-desc">H&ouml;g servicegrad och kundn&ouml;jdhet &auml;r en gemensam n&auml;mnare f&ouml;r alla bolag vi &auml;ger.</div>
-          </div>
-          <div class="value-box reveal">
-            <div class="value-title">Ny teknik</div>
-            <div class="value-desc">Vi tror p&aring; vikten av att anamma ny teknik &mdash; implementering av AI och investeringar i robotisering &mdash; f&ouml;r att s&auml;kerst&auml;lla att v&aring;ra portf&ouml;ljbolag utvecklas med samtiden.</div>
-          </div>
-        </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <!-- FEM HÖRNSTENAR -->
+  <section class="section" style="background:#d6cfc5;color:var(--ink);padding-top:5rem;padding-bottom:5rem">
     <div class="section-narrow">
-        <div class="reveal">
-          <div class="section-label">Finansiell &ouml;versikt</div>
+      <h2 class="section-title reveal" id="omFiloLabel" style="margin-bottom:.6rem">Ägarfilosofi</h2>
+      <p class="om-section-sub reveal" id="omFiloTitle">Vår ägarfilosofi i fem delar.</p>
+      <p class="body-text reveal" id="omFiloIntro" style="max-width:580px;opacity:.6;margin-bottom:3.5rem;font-size:.92rem;font-weight:300">Vår filosofi tar utgångspunkt i grundläggande övertygelser om vad som skapar värde på lång sikt &mdash; för bolagen, för deras anställda, och för samhället runt omkring.</p>
+
+      <div class="cornerstones reveal">
+        <div class="cornerstone" id="philo1">
+          <div class="cornerstone-head">
+            <div class="cornerstone-num">01</div>
+            <div class="cornerstone-title">Evig ägarhorisont</div>
+          </div>
+          <div class="cornerstone-desc">Vi säljer inte. När en grundare överlåter sitt livsverk till INEV vet de att bolaget är ett permanent hem &mdash; inte en position i en portfölj. Den eviga ägarhorisonten skapar ett helt annat ledarskapskontrakt: VD:n kan planera, investera och bygga för framtiden.</div>
+        </div>
+        <div class="cornerstone" id="philo2">
+          <div class="cornerstone-head">
+            <div class="cornerstone-num">02</div>
+            <div class="cornerstone-title">Decentraliserat ledarskap</div>
+          </div>
+          <div class="cornerstone-desc">Vi tror på lokal kompetens. De människor som är närmast marknaden, kunderna och medarbetarna fattar bäst beslut. Moderbolaget är litet och avsiktligt lite &mdash; snabba beslut, inga onödiga processer, ingen byråkrati som bromsar.</div>
+        </div>
+        <div class="cornerstone" id="philo3">
+          <div class="cornerstone-head">
+            <div class="cornerstone-num">03</div>
+            <div class="cornerstone-title">Kapitaldisciplin</div>
+          </div>
+          <div class="cornerstone-desc">Starka kassaflöden är grunden för allt. Vi förvärvar bolag med bevisad lönsamhet &mdash; inte potential på papper utan verklig historik. Vi betalar rätt pris och återinvesterar kassaflödena i tillväxt, organisk såväl som förvärvad.</div>
+        </div>
+        <div class="cornerstone" id="philo4">
+          <div class="cornerstone-head">
+            <div class="cornerstone-num">04</div>
+            <div class="cornerstone-title">Engagemang &amp; kompetens</div>
+          </div>
+          <div class="cornerstone-desc">Vi sitter inte bara med i styrelserummet. Vi bidrar aktivt &mdash; med strategisk kompetens, affärsnätverk och erfarenhet från andra bolag i gruppen. Det är i samspelet mellan moderbolagets kompetens och dotterbolagens djupa marknadskännedom som vi skapar mest värde.</div>
+        </div>
+        <div class="cornerstone" id="philo5">
+          <div class="cornerstone-head">
+            <div class="cornerstone-num">05</div>
+            <div class="cornerstone-title">Teknikagenda</div>
+          </div>
+          <div class="cornerstone-desc">Vi investerar i AI och automatisering som strategisk hävstång. Teknikagendan är en kärnfråga för ägarskap &mdash; inte något som kan delegeras. Vi tar aktivt ansvar för att kartlägga, planera och genomföra teknikskiften i varje portföljbolag.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FÖRVÄRVSMODELL -->
+  <section class="section">
+    <div class="section-narrow">
+      <div class="split reveal">
+        <div>
+          <h2 class="section-title" id="omForvLabel">Förvärvsmodell</h2>
+          <p class="om-section-sub" id="omForvTitle">Vi förvärvar bolag vi förstår &mdash; för alltid.</p>
+          <p class="body-text" id="omForvP1">Vi förvärvar bolag med dokumenterad lönsamhet, starkt kassaflöde och en tydlig position i sin nisch. Bolaget ska ha en verksamhet vi förstår och en ledning som vill driva bolaget vidare &mdash; med en ny ägare som stöttar, inte styr.</p>
+          <p class="body-text" id="omForvP2" style="margin-top:1rem">Vi vet att en företagsförsäljning ofta är det känsligaste beslut en grundare fattar. Vår process är transparent, respektfull och utan onödig tidspress.</p>
+        </div>
+        <div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;opacity:.4;margin-bottom:1rem" id="omForvProfilLabel">Typisk profil</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem" id="forvProfil">
+            <div class="pill">Omsättning 50–500 MSEK</div>
+            <div class="pill">Bevisad lönsamhet</div>
+            <div class="pill">Nischad position</div>
+            <div class="pill">Entreprenörs- eller familjeägt</div>
+            <div class="pill">Engagerad ledning</div>
+          </div>
+          <div style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;opacity:.4;margin-bottom:1rem" id="omForvTillforLabel">Vad vi tillför</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem" id="forvTillfor">
+            <div class="pill" style="border-color:var(--rust);color:var(--rust)">Permanent ägarskap</div>
+            <div class="pill" style="border-color:var(--rust);color:var(--rust)">Strategisk kompetens</div>
+            <div class="pill" style="border-color:var(--rust);color:var(--rust)">Nätverk &amp; kapital</div>
+            <div class="pill" style="border-color:var(--rust);color:var(--rust)">Teknikagenda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEKNIKAGENDA -->
+  <section class="section" style="background:var(--off)">
+    <div class="section-narrow">
+      <div class="split reveal">
+        <div>
+          <h2 class="section-title" id="omTekLabel">Teknikagenda</h2>
+          <p class="om-section-sub" id="omTekTitle">Teknik som ägarstrategi &mdash; inte som sidoprojekt.</p>
+        </div>
+        <div>
+          <p class="body-text" id="omTekP1">Automatisering och AI förändrar konkurrenslandskapet snabbare än de flesta hinner anpassa sig. Som ägare kan vi skala kompetens som inget enskilt bolag kan bygga ensam. Vi delar erfarenheter, kravställer gemensamt mot leverantörer och bidrar med en teknikagenda baserad på vad som faktiskt fungerar.</p>
+          <p class="body-text" id="omTekP2">Målet är att säkerställa att de svenska bolag vi äger kan hävda sig &mdash; regionalt och globalt &mdash; i en era när teknikövertag allt oftare avgör konkurrensen.</p>
+        </div>
+      </div>
+      <div class="tek-points reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--stone)">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:.5rem;color:var(--rust)" id="tekPt1Title">Kartläggning</div>
+          <div style="font-size:.85rem;opacity:.6;line-height:1.65" id="tekPt1Desc">Systematisk kartläggning av automatiseringsmöjligheter i varje portföljbolag.</div>
+        </div>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:.5rem;color:var(--rust)" id="tekPt2Title">AI &amp; automation</div>
+          <div style="font-size:.85rem;opacity:.6;line-height:1.65" id="tekPt2Desc">AI-driven processoptimering inom produktion, administration och kundrelationer.</div>
+        </div>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:.5rem;color:var(--rust)" id="tekPt3Title">Kompetensöverföring</div>
+          <div style="font-size:.85rem;opacity:.6;line-height:1.65" id="tekPt3Desc">Lärande tvärs bolagen &mdash; vad fungerar, vad fungerar inte.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANSIELL ÖVERSIKT -->
+  <section class="section">
+    <div class="section-narrow">
+        <div class="reveal fin-grid">
+          <div>
+            <h2 class="section-title" id="omFinLabel" style="margin-bottom:.5rem">Finansiell <em>översikt</em></h2>
+          </div>
           <table class="fin-table">
             <thead>
               <tr>
@@ -460,12 +567,12 @@ button{cursor:pointer;font-family:inherit}
               </tr>
             </thead>
             <tbody>
-              <tr><td>Int&auml;kter</td><td>1&nbsp;514</td><td>1&nbsp;485</td><td>1&nbsp;254</td><td>778</td><td>661</td><td>311</td></tr>
+              <tr><td>Intäkter</td><td>1&nbsp;514</td><td>1&nbsp;485</td><td>1&nbsp;254</td><td>778</td><td>661</td><td>311</td></tr>
               <tr><td>EBITDA</td><td>109</td><td>52</td><td>104</td><td>45</td><td>70</td><td>31</td></tr>
               <tr><td>Resultat efter fin. poster</td><td>27</td><td>&minus;18</td><td>54</td><td>9</td><td>35</td><td>9</td></tr>
               <tr><td>Balansomslutning</td><td>1&nbsp;093</td><td>1&nbsp;046</td><td>1&nbsp;046</td><td>762</td><td>513</td><td>394</td></tr>
               <tr><td>Soliditet, %</td><td>36</td><td>35</td><td>32</td><td>33</td><td>39</td><td>45</td></tr>
-              <tr><td>Medelantal anst&auml;llda</td><td>527</td><td>544</td><td>494</td><td>295</td><td>216</td><td>91</td></tr>
+              <tr><td>Medelantal anställda</td><td>527</td><td>544</td><td>494</td><td>295</td><td>216</td><td>91</td></tr>
             </tbody>
           </table>
         </div>
@@ -487,6 +594,13 @@ button{cursor:pointer;font-family:inherit}
     <p>En resa av f&ouml;rv&auml;rv, tillv&auml;xt och l&aring;ngsiktigt byggande av en industriell koncern med r&ouml;tter i Sm&aring;land.</p>
   </div>
   <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-year">2026</div>
+      <div class="tl-content">
+        <h3>Ny ägarstruktur</h3>
+        <p>Nytt ägarkollektiv, bestående av nya investerare och två befintliga INEV-grundare, förvärvar samtliga aktier i INEV.</p>
+      </div>
+    </div>
     <div class="tl-item reveal">
       <div class="tl-year">2024</div>
       <div class="tl-content">
@@ -738,30 +852,54 @@ button{cursor:pointer;font-family:inherit}
     'c.terri.desc':   {sv:'Tillverkar kraftfulla skogsmaskiner f\u00f6r professionellt skogsbruk \u2014 sk\u00f6rdare, skotare och kombimaskiner.',
                        en:'Manufactures powerful forestry machines for professional forestry \u2014 harvesters, forwarders, and combination machines.'},
 
-    'om.label': {sv:'Om oss', en:'About us'},
-    'om.title': {sv:'Vi \u00e4r<br><em>l\u00e5ngsiktiga.</em>', en:'We are<br><em>long-term.</em>'},
-    'om.p1': {sv:'INEV grundades 2017 med ambitionen att bygga en svensk industrigrupp f\u00f6r framtiden. Vi f\u00f6rv\u00e4rvar l\u00f6nsamma bolag med starka marknadspositioner \u2014 och f\u00f6r alltid.',
-              en:'INEV was founded in 2017 with the ambition to build a Swedish industrial group for the future. We acquire profitable companies with strong market positions \u2014 and for good.'},
-    'om.p2': {sv:'Vi tror p\u00e5 decentraliserat ledarskap \u2014 bolagens ledningar f\u00e5r mandat att driva sina verksamheter sj\u00e4lva, med st\u00f6d fr\u00e5n oss n\u00e4r det beh\u00f6vs. V\u00e5r roll \u00e4r att vara en engagerad \u00e4gare som bidrar med kapital, kompetens och n\u00e4tverk.',
-              en:'We believe in decentralised leadership \u2014 management teams are empowered to run their businesses independently, with our support when needed. Our role is to be an engaged owner contributing capital, expertise, and network.'},
-    'om.p3': {sv:'Portf\u00f6ljen sp\u00e4nner \u00f6ver tillverkning, handel och tj\u00e4nster \u2014 bolag som \u00e4r specialiserade inom sina nischer och som har visat f\u00f6rm\u00e5ga att generera stabila kassafl\u00f6den \u00f6ver tid.',
-              en:'The portfolio spans manufacturing, commerce, and services \u2014 companies that are specialised within their niches and have demonstrated the ability to generate stable cash flows over time.'},
-    'val.longsikt.title': {sv:'L\u00e5ngsiktighet', en:'Long-term'},
-    'val.longsikt.desc':  {sv:'Vi f\u00f6rv\u00e4rvar f\u00f6r att \u00e4ga, inte f\u00f6r att s\u00e4lja. V\u00e5ra bolag f\u00e5r arbeta med ett tidsl\u00f6st perspektiv.',
-                           en:'We acquire to own, not to sell. Our companies can work with a timeless perspective.'},
-    'val.entr.title': {sv:'Entrepren\u00f6rskap', en:'Entrepreneurship'},
-    'val.entr.desc':  {sv:'Vi tror p\u00e5 m\u00e4nniskor som bygger f\u00f6retag och ger dem utrymme att forts\u00e4tta g\u00f6ra det.',
-                       en:'We believe in people who build companies and give them room to keep doing so.'},
-    'val.spec.title': {sv:'Specialisering', en:'Specialisation'},
-    'val.spec.desc':  {sv:'Djup kompetens inom en nisch sl\u00e5r bred generalism. Vi s\u00f6ker bolag som \u00e4r b\u00e4st p\u00e5 det de g\u00f6r.',
-                       en:'Deep expertise in a niche beats broad generalism. We look for companies that are best at what they do.'},
-    'val.serv.title': {sv:'Servicegrad', en:'Service quality'},
-    'val.serv.desc':  {sv:'H\u00f6g servicegrad och n\u00e4ra kundrelationer \u00e4r fundamentet i alla v\u00e5ra bolag.',
-                       en:'High service quality and close customer relationships are the foundation of all our companies.'},
-    'val.tek.title': {sv:'Ny teknik', en:'New technology'},
-    'val.tek.desc':  {sv:'Vi investerar aktivt i ny teknik f\u00f6r att s\u00e4kerst\u00e4lla att v\u00e5ra bolag f\u00f6rblir konkurrenskraftiga.',
-                      en:'We actively invest in new technology to ensure our companies remain competitive.'},
-    'om.fin.label': {sv:'Finansiell \u00f6versikt', en:'Financial overview'},
+    'om.label': {sv:'Om INEV', en:'About INEV'},
+    'om.title': {sv:'Industriell Evolution.', en:'Industrial Evolution.'},
+    'om.p1': {sv:'INEV grundades 2017 av en grupp entrepren\u00f6rer under ledning av Per Rodert som fram till 2026 arbetat som VD f\u00f6r koncernen. Under 2026 har INEV genomg\u00e5tt en \u00e4garkonsolidering d\u00e4r ett nytt investerar\u00adkollektiv tillsammans med ett f\u00e5tal av de tidigare \u00e4garna - d\u00e4r Per Rodert \u00e4r en av dem - k\u00f6pt samtliga aktier i INEV fr\u00e5n \u00f6vriga ursprungliga \u00e4gare av koncernen. I samband med \u00e4garskiftet tr\u00e4dde Per Rodert in i rollen som styrelseordf\u00f6rande d\u00e5 Sebastian Andreescu och Ingemar Sj\u00f6gren tr\u00e4tt in i rollerna som VD respektive vice VD.',
+              en:'INEV was founded in 2017 by a group of entrepreneurs led by Per Rodert, who served as CEO of the group until 2026. During 2026, INEV underwent an ownership consolidation in which a new investor collective, together with a few of the previous owners - Per Rodert being one of them - acquired all shares in INEV from the remaining original owners. In connection with the ownership transition, Per Rodert assumed the role of Chairman of the Board as Sebastian Andreescu and Ingemar Sj\u00f6gren stepped into the roles of CEO and Deputy CEO respectively.'},
+    'om.p2': {sv:'Det nya \u00e4garkollektivet vill forts\u00e4tta bygga vidare p\u00e5 INEVs ursprungliga \u00e4garfilosofi genom ett aktivt engagemang, en accelererad implementation av ny teknik och en fram\u00e5tlutat f\u00f6rv\u00e4rvsagenda. Vi \u00e4r \u00f6vertygade om att starka svenska bolag, r\u00e4tt \u00e4gda och r\u00e4tt rustade, kan vara konkurrenskraftiga i en v\u00e4rld som f\u00f6r\u00e4ndras snabbare \u00e4n n\u00e5gonsin.',
+              en:'The new ownership collective intends to continue building on INEV\u2019s original ownership philosophy through active engagement, accelerated implementation of new technology and a forward-leaning acquisition agenda. We are convinced that strong Swedish companies, properly owned and properly equipped, can be competitive in a world that is changing faster than ever.'},
+    'om.p3': {sv:'Med bas i J\u00f6nk\u00f6ping \u00e4ger vi elva portf\u00f6ljbolag med sammanlagt \u00f6ver 500 anst\u00e4llda och int\u00e4kter p\u00e5 \u00f6ver 1,5 miljarder kronor.',
+              en:'Based in J\u00f6nk\u00f6ping, we own eleven portfolio companies with over 500 employees and revenues exceeding SEK 1.5 billion.'},
+    'om.filo.label': {sv:'\u00c4garfilosofi', en:'Ownership Philosophy'},
+    'om.filo.title': {sv:'V\u00e5r \u00e4garfilosofi i fem delar.', en:'Our ownership philosophy in five parts.'},
+    'om.filo.intro': {sv:'V\u00e5r filosofi tar utg\u00e5ngspunkt i grundl\u00e4ggande \u00f6vertygelser om vad som skapar v\u00e4rde p\u00e5 l\u00e5ng sikt \u2014 f\u00f6r bolagen, f\u00f6r deras anst\u00e4llda, och f\u00f6r samh\u00e4llet runt omkring.',
+                      en:'Our philosophy is grounded in fundamental convictions about what creates long-term value \u2014 for the companies, for their employees, and for the society around them.'},
+    'philo1.title': {sv:'Evig \u00e4garhorisont', en:'Eternal ownership horizon'},
+    'philo1.desc': {sv:'Vi s\u00e4ljer inte. N\u00e4r en grundare \u00f6verl\u00e5ter sitt livsverk till INEV vet de att bolaget \u00e4r ett permanent hem \u2014 inte en position i en portf\u00f6lj. Den eviga \u00e4garhorisonten skapar ett helt annat ledarskapskontrakt: VD:n kan planera, investera och bygga f\u00f6r framtiden.',
+                    en:'We don\u2019t sell. When a founder entrusts their life\u2019s work to INEV, they know the company is a permanent home \u2014 not a position in a portfolio. The eternal ownership horizon creates an entirely different leadership contract: the CEO can plan, invest and build for the future.'},
+    'philo2.title': {sv:'Decentraliserat ledarskap', en:'Decentralised leadership'},
+    'philo2.desc': {sv:'Vi tror p\u00e5 lokal kompetens. De m\u00e4nniskor som \u00e4r n\u00e4rmast marknaden, kunderna och medarbetarna fattar b\u00e4st beslut. Moderbolaget \u00e4r litet och avsiktligt lite \u2014 snabba beslut, inga on\u00f6diga processer, ingen byr\u00e5krati som bromsar.',
+                    en:'We believe in local expertise. The people closest to the market, customers and employees make the best decisions. The parent company is small by design \u2014 fast decisions, no unnecessary processes, no bureaucracy slowing things down.'},
+    'philo3.title': {sv:'Kapitaldisciplin', en:'Capital discipline'},
+    'philo3.desc': {sv:'Starka kassafl\u00f6den \u00e4r grunden f\u00f6r allt. Vi f\u00f6rv\u00e4rvar bolag med bevisad l\u00f6nsamhet \u2014 inte potential p\u00e5 papper utan verklig historik. Vi betalar r\u00e4tt pris och \u00e5terinvesterar kassafl\u00f6dena i tillv\u00e4xt, organisk s\u00e5v\u00e4l som f\u00f6rv\u00e4rvad.',
+                    en:'Strong cash flows are the foundation of everything. We acquire companies with proven profitability \u2014 not potential on paper but real track records. We pay the right price and reinvest cash flows in growth, organic as well as acquired.'},
+    'philo4.title': {sv:'Engagemang & kompetens', en:'Engagement & expertise'},
+    'philo4.desc': {sv:'Vi sitter inte bara med i styrelserummet. Vi bidrar aktivt \u2014 med strategisk kompetens, aff\u00e4rsn\u00e4tverk och erfarenhet fr\u00e5n andra bolag i gruppen. Det \u00e4r i samspelet mellan moderbolagets kompetens och dotterbolagens djupa marknadsk\u00e4nnedom som vi skapar mest v\u00e4rde.',
+                    en:'We don\u2019t just sit in the boardroom. We contribute actively \u2014 with strategic expertise, business networks and experience from other companies in the group. It is in the interplay between the parent\u2019s expertise and the subsidiaries\u2019 deep market knowledge that we create the most value.'},
+    'philo5.title': {sv:'Teknikagenda', en:'Technology agenda'},
+    'philo5.desc': {sv:'Vi investerar i AI och automatisering som strategisk h\u00e4vstång. Teknikagendan \u00e4r en k\u00e4rnfr\u00e5ga f\u00f6r \u00e4garskap \u2014 inte n\u00e5got som kan delegeras. Vi tar aktivt ansvar f\u00f6r att kartl\u00e4gga, planera och genomf\u00f6ra teknikskiften i varje portf\u00f6ljbolag.',
+                    en:'We invest in AI and automation as a strategic lever. The technology agenda is a core ownership issue \u2014 not something that can be delegated. We take active responsibility for mapping, planning and executing technology shifts in every portfolio company.'},
+    'om.forv.label': {sv:'F\u00f6rv\u00e4rvsmodell', en:'Acquisition Model'},
+    'om.forv.title': {sv:'Vi f\u00f6rv\u00e4rvar bolag vi f\u00f6rst\u00e5r \u2014 f\u00f6r alltid.', en:'We acquire companies we understand \u2014 forever.'},
+    'om.forv.p1': {sv:'Vi f\u00f6rv\u00e4rvar bolag med dokumenterad l\u00f6nsamhet, starkt kassafl\u00f6de och en tydlig position i sin nisch. Bolaget ska ha en verksamhet vi f\u00f6rst\u00e5r och en ledning som vill driva bolaget vidare \u2014 med en ny \u00e4gare som st\u00f6ttar, inte styr.',
+                   en:'We acquire companies with documented profitability, strong cash flow and a clear position in their niche. The company should have operations we understand and a management team that wants to continue leading \u2014 with a new owner that supports, not controls.'},
+    'om.forv.p2': {sv:'Vi vet att en f\u00f6retagsf\u00f6rs\u00e4ljning ofta \u00e4r det k\u00e4nsligaste beslut en grundare fattar. V\u00e5r process \u00e4r transparent, respektfull och utan on\u00f6dig tidspress.',
+                   en:'We know that selling a company is often the most sensitive decision a founder makes. Our process is transparent, respectful and without unnecessary time pressure.'},
+    'om.forv.profil.label': {sv:'Typisk profil', en:'Typical profile'},
+    'om.forv.tillfor.label': {sv:'Vad vi tillf\u00f6r', en:'What we bring'},
+    'om.tek.label': {sv:'Teknikagenda', en:'Technology Agenda'},
+    'om.tek.title': {sv:'Teknik som \u00e4garstrategi \u2014 inte som sidoprojekt.', en:'Technology as ownership strategy \u2014 not a side project.'},
+    'om.tek.p1': {sv:'Automatisering och AI f\u00f6r\u00e4ndrar konkurrenslandskapet snabbare \u00e4n de flesta hinner anpassa sig. Som \u00e4gare kan vi skala kompetens som inget enskilt bolag kan bygga ensam. Vi delar erfarenheter, kravst\u00e4ller gemensamt mot leverant\u00f6rer och bidrar med en teknikagenda baserad p\u00e5 vad som faktiskt fungerar.',
+                  en:'Automation and AI are transforming the competitive landscape faster than most can adapt. As owners, we can scale expertise that no single company could build alone. We share experiences, set joint requirements with suppliers, and contribute a technology agenda based on what actually works.'},
+    'om.tek.p2': {sv:'M\u00e5let \u00e4r att s\u00e4kerst\u00e4lla att de svenska bolag vi \u00e4ger kan h\u00e4vda sig \u2014 regionalt och globalt \u2014 i en era n\u00e4r teknik\u00f6vertag allt oftare avg\u00f6r konkurrensen.',
+                  en:'The goal is to ensure that the Swedish companies we own can compete \u2014 regionally and globally \u2014 in an era when technological advantage increasingly determines competition.'},
+    'om.tek.pt1.title': {sv:'Kartl\u00e4ggning', en:'Mapping'},
+    'om.tek.pt1.desc': {sv:'Systematisk kartl\u00e4ggning av automatiseringsm\u00f6jligheter i varje portf\u00f6ljbolag.', en:'Systematic mapping of automation opportunities in every portfolio company.'},
+    'om.tek.pt2.title': {sv:'AI & automation', en:'AI & automation'},
+    'om.tek.pt2.desc': {sv:'AI-driven processoptimering inom produktion, administration och kundrelationer.', en:'AI-driven process optimisation in production, administration and customer relations.'},
+    'om.tek.pt3.title': {sv:'Kompetens\u00f6verf\u00f6ring', en:'Knowledge transfer'},
+    'om.tek.pt3.desc': {sv:'L\u00e4rande tv\u00e4rs bolagen \u2014 vad fungerar, vad fungerar inte.', en:'Cross-company learning \u2014 what works, what doesn\u2019t.'},
+    'om.fin.label': {sv:'Finansiell <em>\u00f6versikt</em>', en:'Financial <em>overview</em>'},
     'om.fin.rev':   {sv:'Int\u00e4kter',           en:'Revenue'},
     'om.fin.res':   {sv:'Resultat efter fin. poster', en:'Result after fin. items'},
     'om.fin.bal':   {sv:'Balansomslutning',        en:'Total assets'},
@@ -770,6 +908,8 @@ button{cursor:pointer;font-family:inherit}
 
     'hist.title': {sv:'F\u00f6rvarvshistorik<br><em style="color:var(--rust)">sedan 2017</em>', en:'Acquisition history<br><em style="color:var(--rust)">since 2017</em>'},
     'hist.sub':   {sv:'En resa av f\u00f6rv\u00e4rv, tillv\u00e4xt och l\u00e5ngsiktigt byggande av en industriell koncern med r\u00f6tter i Sm\u00e5land.', en:'A journey of acquisitions, growth and long-term building of an industrial group rooted in Sm\u00e5land.'},
+    'tl.nyagar':  {sv:'Nytt \u00e4garkollektiv, best\u00e5ende av nya investerare och tv\u00e5 befintliga INEV-grundare, f\u00f6rv\u00e4rvar samtliga aktier i INEV.',
+                   en:'New ownership collective, consisting of new investors and two existing INEV founders, acquires all shares in INEV.'},
     'tl.terri':   {sv:'Terri, tidigare en underdivision till Alfing, etableras som ett eget bolag inom INEV-koncernen. Terri tillverkar kraftfulla och smidiga skogsmaskiner, sk\u00f6rdare, skotare och kombimaskiner, f\u00f6r professionellt och h\u00e5llbart skogsbruk, speciellt anpassade f\u00f6r best\u00e5ndsg\u00e5ende gallring med minimala markskador. Maskinerna byggs i \u00c4lmhult.',
                    en:'Terri, previously a sub-division of Alfing, is established as a standalone company within the INEV group. Terri manufactures powerful and agile forestry machines \u2014 harvesters, forwarders and combined machines \u2014 for professional and sustainable forestry, specially designed for selective thinning with minimal ground damage. The machines are built in \u00c4lmhult.'},
     'tl.bewa':    {sv:'F\u00f6rv\u00e4rv av Bewa Intraf, specialist p\u00e5 fordonsanpassningar f\u00f6r s\u00e4rskilda anv\u00e4ndningsomr\u00e5den.',
@@ -804,14 +944,14 @@ button{cursor:pointer;font-family:inherit}
                          en:'We are always interested in hearing from entrepreneurs, partners and potential sellers.'},
     'kontakt.email.btn':{sv:'info@inev.nu', en:'info@inev.nu'},
     'per.role':  {sv:'Styrelseordf\u00f6rande', en:'Chairman of the Board'},
-    'per.bio':   {sv:'Entrepren\u00f6r och grundare av INEV med l\u00e5ng erfarenhet av industriellt f\u00f6retagsbyggande i sm\u00e5l\u00e4ndsk tradition.',
-                  en:'Entrepreneur and founder of INEV with extensive experience in industrial company building in the tradition of Sm\u00e5land.'},
+    'per.bio':   {sv:'Grundare av INEV med en l\u00e5ng erfarenhet av att leda f\u00f6retag inom svensk industri \u2013 tidigare VD f\u00f6r Munksj\u00f6koncernen, R\u00f6rvik Timber samt Alfa Laval International \u2013 samt bred erfarenhet fr\u00e5n styrelseuppdrag i noterade bolag \u2013 XANO, ITAB och nu senast som styrelseordf\u00f6rande i Devport. Vidare \u00e4r Per aktiv och engagerad i J\u00f6nk\u00f6pingsregionen \u2013 bland annat som tidigare vice ordf\u00f6rande f\u00f6r HV71 samt i sin roll som styrelseledamot i J\u00f6nk\u00f6ping Business Development. Per studerade p\u00e5 Handelsh\u00f6gskolan i Stockholm och tog examen 1977.',
+                  en:'Founder of INEV with extensive experience leading companies within Swedish industry \u2013 formerly CEO of the Munksj\u00f6 Group, R\u00f6rvik Timber and Alfa Laval International \u2013 as well as broad experience from board positions in listed companies \u2013 XANO, ITAB and most recently as Chairman of the Board of Devport. Per is also active and engaged in the J\u00f6nk\u00f6ping region \u2013 including as former Vice Chairman of HV71 and through his role as board member of J\u00f6nk\u00f6ping Business Development. Per studied at the Stockholm School of Economics and graduated in 1977.'},
     'seb.role':  {sv:'VD', en:'CEO'},
-    'seb.bio':   {sv:'Erfarenhet fr\u00e5n general management, finans och supply chain inom oil & gas, tillverkningsindustri \u2013 senast som grundare och VD f\u00f6r Billhop \u2013 ett pan-europeiskt fintech-bolag som under 2025 f\u00f6rv\u00e4rvades av det amerikanska fintech-bolaget Ramp.',
-                  en:'Background in general management, finance and supply chain within oil & gas and manufacturing \u2013 most recently as co-founder and CEO of Billhop \u2013 a pan-European fintech company acquired in 2025 by US fintech company Ramp.'},
+    'seb.bio':   {sv:'Sebastian har erfarenhet fr\u00e5n general management, finans och supply chain inom oil & gas, tillverkningsindustri samt som entrepren\u00f6r \u2013 senast som grundare och VD f\u00f6r Billhop \u2013 ett pan-europeiskt fintech-bolag som under 2025 f\u00f6rv\u00e4rvades av det amerikanska fintech-bolaget Ramp. Sebastian studerade p\u00e5 Handelsh\u00f6gskolan i Stockholm och tog examen 2008.',
+                  en:'Sebastian has experience in general management, finance and supply chain within oil & gas, manufacturing and as an entrepreneur \u2013 most recently as founder and CEO of Billhop \u2013 a pan-European fintech company acquired in 2025 by US fintech company Ramp. Sebastian studied at the Stockholm School of Economics and graduated in 2008.'},
     'ing.role':  {sv:'Vice VD &amp; CFO', en:'Deputy CEO &amp; CFO'},
-    'ing.bio':   {sv:'Erfarenhet fr\u00e5n management consulting, investment banking, general management och finans inom tillverkningsindustri \u2013 senast som grundare och CFO f\u00f6r Billhop \u2013 ett pan-europeiskt fintech-bolag som under 2025 f\u00f6rv\u00e4rvades av det amerikanska fintech-bolaget Ramp.',
-                  en:'Background in management consulting, investment banking, general management and finance within manufacturing \u2013 most recently as co-founder and CFO of Billhop \u2013 a pan-European fintech company acquired in 2025 by US fintech company Ramp.'}
+    'ing.bio':   {sv:'Ingemar har erfarenhet fr\u00e5n management consulting, investment banking, general management och finans inom tillverkningsindustri \u2013 senast som grundare och CFO f\u00f6r Billhop \u2013 ett pan-europeiskt fintech-bolag som under 2025 f\u00f6rv\u00e4rvades av det amerikanska fintech-bolaget Ramp. Ingemar studerade p\u00e5 Handelsh\u00f6gskolan i Stockholm och tog examen 2004.',
+                  en:'Ingemar has experience in management consulting, investment banking, general management and finance within manufacturing \u2013 most recently as founder and CFO of Billhop \u2013 a pan-European fintech company acquired in 2025 by US fintech company Ramp. Ingemar studied at the Stockholm School of Economics and graduated in 2004.'}
   };
 
   function T(key) {
@@ -985,20 +1125,69 @@ button{cursor:pointer;font-family:inherit}
     document.querySelectorAll('#page-innehav .company-link').forEach(function(a){ a.textContent = T('home.carousel.visit'); });
 
     // OM
-    var omPgLabel = document.querySelector('#page-om .section-label');
-    if (omPgLabel) omPgLabel.textContent = T('om.label');
-    var omPgTitle = document.querySelector('#page-om .section-title');
-    if (omPgTitle) omPgTitle.innerHTML = T('om.title');
-    var omBodies = document.querySelectorAll('#page-om .body-text');
-    if (omBodies[0]) omBodies[0].textContent = T('om.p1');
-    if (omBodies[1]) omBodies[1].textContent = T('om.p2');
-    if (omBodies[2]) omBodies[2].textContent = T('om.p3');
-    var valTitles = document.querySelectorAll('.value-title');
-    var valDescs  = document.querySelectorAll('.value-desc');
-    ['val.longsikt.title','val.entr.title','val.spec.title','val.serv.title','val.tek.title'].forEach(function(k,i){ if(valTitles[i]) valTitles[i].textContent = T(k); });
-    ['val.longsikt.desc','val.entr.desc','val.spec.desc','val.serv.desc','val.tek.desc'].forEach(function(k,i){ if(valDescs[i]) valDescs[i].textContent = T(k); });
-    var finLabels = document.querySelectorAll('#page-om .section-label');
-    if (finLabels[1]) finLabels[1].textContent = T('om.fin.label');
+    var omPageLabel = document.getElementById('omPageLabel');
+    if (omPageLabel) omPageLabel.textContent = T('om.label');
+    var omPageTitle = document.getElementById('omPageTitle');
+    if (omPageTitle) omPageTitle.textContent = T('om.title');
+    var omP1 = document.getElementById('omP1');
+    if (omP1) omP1.textContent = T('om.p1');
+    var omP2 = document.getElementById('omP2');
+    if (omP2) omP2.textContent = T('om.p2');
+    var omP3 = document.getElementById('omP3');
+    if (omP3) omP3.textContent = T('om.p3');
+    // Cornerstones
+    var omFiloLabel = document.getElementById('omFiloLabel');
+    if (omFiloLabel) omFiloLabel.textContent = T('om.filo.label');
+    var omFiloTitle = document.getElementById('omFiloTitle');
+    if (omFiloTitle) omFiloTitle.textContent = T('om.filo.title');
+    var omFiloIntro = document.getElementById('omFiloIntro');
+    if (omFiloIntro) omFiloIntro.textContent = T('om.filo.intro');
+    ['philo1','philo2','philo3','philo4','philo5'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) {
+        var t2 = el.querySelector('.cornerstone-title');
+        var d2 = el.querySelector('.cornerstone-desc');
+        if (t2) t2.textContent = T(id + '.title');
+        if (d2) d2.textContent = T(id + '.desc');
+      }
+    });
+    // Förvärvsmodell
+    var omForvLabel = document.getElementById('omForvLabel');
+    if (omForvLabel) omForvLabel.textContent = T('om.forv.label');
+    var omForvTitle = document.getElementById('omForvTitle');
+    if (omForvTitle) omForvTitle.textContent = T('om.forv.title');
+    var omForvP1 = document.getElementById('omForvP1');
+    if (omForvP1) omForvP1.textContent = T('om.forv.p1');
+    var omForvP2 = document.getElementById('omForvP2');
+    if (omForvP2) omForvP2.textContent = T('om.forv.p2');
+    var omForvProfilLabel = document.getElementById('omForvProfilLabel');
+    if (omForvProfilLabel) omForvProfilLabel.textContent = T('om.forv.profil.label');
+    var omForvTillforLabel = document.getElementById('omForvTillforLabel');
+    if (omForvTillforLabel) omForvTillforLabel.textContent = T('om.forv.tillfor.label');
+    // Teknikagenda
+    var omTekLabel = document.getElementById('omTekLabel');
+    if (omTekLabel) omTekLabel.textContent = T('om.tek.label');
+    var omTekTitle = document.getElementById('omTekTitle');
+    if (omTekTitle) omTekTitle.textContent = T('om.tek.title');
+    var omTekP1 = document.getElementById('omTekP1');
+    if (omTekP1) omTekP1.textContent = T('om.tek.p1');
+    var omTekP2 = document.getElementById('omTekP2');
+    if (omTekP2) omTekP2.textContent = T('om.tek.p2');
+    var tekPt1T = document.getElementById('tekPt1Title');
+    if (tekPt1T) tekPt1T.textContent = T('om.tek.pt1.title');
+    var tekPt1D = document.getElementById('tekPt1Desc');
+    if (tekPt1D) tekPt1D.textContent = T('om.tek.pt1.desc');
+    var tekPt2T = document.getElementById('tekPt2Title');
+    if (tekPt2T) tekPt2T.textContent = T('om.tek.pt2.title');
+    var tekPt2D = document.getElementById('tekPt2Desc');
+    if (tekPt2D) tekPt2D.textContent = T('om.tek.pt2.desc');
+    var tekPt3T = document.getElementById('tekPt3Title');
+    if (tekPt3T) tekPt3T.textContent = T('om.tek.pt3.title');
+    var tekPt3D = document.getElementById('tekPt3Desc');
+    if (tekPt3D) tekPt3D.textContent = T('om.tek.pt3.desc');
+    // Finansiellt
+    var omFinLabel = document.getElementById('omFinLabel');
+    if (omFinLabel) omFinLabel.innerHTML = T('om.fin.label');
     var finRows = document.querySelectorAll('#page-om .fin-table tbody tr td:first-child');
     ['om.fin.rev','EBITDA','om.fin.res','om.fin.bal','om.fin.sol','om.fin.emp'].forEach(function(k,i){ if(finRows[i] && t[k]) finRows[i].textContent = T(k); });
 
@@ -1008,7 +1197,7 @@ button{cursor:pointer;font-family:inherit}
     var histSub = document.querySelector('.historik-hero p');
     if (histSub) histSub.textContent = T('hist.sub');
     var tlItems = document.querySelectorAll('.tl-content p');
-    ['tl.terri','tl.bewa','tl.stacke','tl.alfing','tl.viking','tl.ripa','tl.gvm','tl.aip','tl.lt','tl.gma','tl.walker','tl.steel','tl.lanab','tl.founded'].forEach(function(k,i){ if(tlItems[i]) tlItems[i].textContent = T(k); });
+    ['tl.nyagar','tl.terri','tl.bewa','tl.stacke','tl.alfing','tl.viking','tl.ripa','tl.gvm','tl.aip','tl.lt','tl.gma','tl.walker','tl.steel','tl.lanab','tl.founded'].forEach(function(k,i){ if(tlItems[i]) tlItems[i].textContent = T(k); });
 
     // KONTAKT
     var kH1 = document.querySelector('.kontakt-left h1');
