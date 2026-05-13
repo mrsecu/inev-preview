@@ -500,7 +500,7 @@ img{max-width:100%;display:block}
 .historik-bg{position:absolute;inset:-8%;z-index:0;background:url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2600&q=80') center 50%/cover no-repeat;transform-origin:50% 50%;animation:slowPan 22s ease-in-out infinite alternate;will-change:transform}
 .historik-hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,14,18,.62) 0%,rgba(10,14,18,.48) 45%,rgba(10,14,18,.68) 100%)}
 .historik-hero > *:not(.historik-bg){position:relative;z-index:2}
-.historik-hero h1{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5.5vw,5rem);line-height:1.02;font-weight:500;letter-spacing:-.015em;margin-bottom:1.2rem}
+.historik-hero h1{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.4rem);line-height:1.35;font-weight:500;letter-spacing:-.005em;margin-bottom:0;max-width:780px;margin-left:auto;margin-right:auto}
 .historik-hero h1 em{font-style:italic;color:var(--laser)}
 .historik-hero p{position:relative;max-width:640px;margin:0 auto;color:rgba(248,246,241,.7);font-size:1rem;line-height:1.7}
 .historik-hero .eyebrow{position:relative;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:1.5rem;display:inline-block}
@@ -526,7 +526,7 @@ img{max-width:100%;display:block}
 .tl-content p{font-size:.9rem;color:rgba(15,15,14,.6);line-height:1.7}
 
 /* ─────────────────────────────────────────── KONTAKT / PEOPLE */
-.kontakt-hero{position:relative;background:var(--steel);color:var(--paper);padding:10rem 3rem 6rem;overflow:hidden;text-align:center}
+.kontakt-hero{position:relative;background:var(--steel);color:var(--paper);padding:8rem 3rem 5rem;overflow:hidden;text-align:center}
 .kontakt-hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.07) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
 .kontakt-hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
@@ -534,7 +534,7 @@ img{max-width:100%;display:block}
 .kontakt-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:500;line-height:1.02;letter-spacing:-.015em;margin-bottom:1.2rem;color:var(--paper)}
 .kontakt-hero h1 em{font-style:italic;color:var(--laser)}
 .kontakt-hero p{color:rgba(248,246,241,.7);font-size:1rem;line-height:1.7;max-width:640px;margin:0 auto 1.8rem}
-.kontakt-hero .actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+.kontakt-hero .actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:0}
 .kontakt-hero .addr{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.16em;line-height:1.9;color:rgba(248,246,241,.6);text-transform:uppercase;padding-top:1.8rem;border-top:1px solid rgba(248,246,241,.12);display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;max-width:760px;margin:0 auto}
 .kontakt-hero .addr .col{text-align:left}
 .kontakt-hero .addr .l{display:block;color:var(--laser);font-size:.58rem;letter-spacing:.18em;margin-bottom:.3rem}
@@ -1036,7 +1036,6 @@ img{max-width:100%;display:block}
     <div class="historik-bg"></div>
     <span class="eyebrow" data-i18n="hi.eyebrow">· Historik</span>
     <h1 data-i18n="hi.title">En resa av förvärv, tillväxt och långsiktigt byggande av en industriell koncern med rötter i Småland.</h1>
-    <p data-i18n="hi.body">En resa av förvärv, tillväxt och långsiktigt byggande av en industriell koncern med rötter i Småland.</p>
   </div>
   <div class="timeline-wrap">
     <div class="timeline" id="timeline">
@@ -1079,11 +1078,6 @@ img{max-width:100%;display:block}
       <p data-i18n="k.body">Vi är alltid intresserade av att höra från entreprenörer, samarbetspartners och potentiella säljare. Konfidentiellt och utan tidspress.</p>
       <div class="actions">
         <a href="mailto:info@inev.se" class="btn btn-laser"><span data-i18n="k.send">Skicka e-post</span> <span class="arr">→</span></a>
-      </div>
-      <div class="addr">
-        <div class="col"><span class="l">Jönköping</span>Östra Storgatan 13 B<br>553 21 Jönköping</div>
-        <div class="col"><span class="l">Stockholm</span>Kungsgatan 8<br>111 43 Stockholm</div>
-        <div class="col"><span class="l" data-i18n="k.email">E-post</span><a href="mailto:info@inev.se" style="color:rgba(248,246,241,.85);text-decoration:none">info@inev.se</a></div>
       </div>
     </div>
   </section>
