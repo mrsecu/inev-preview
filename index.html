@@ -17,8 +17,8 @@
   --rust:#8b5e3c;
   --sage:#4a5c4e;
   --clay:#d9b99b;
-  --laser:#8b5e3c;
-  --laser-soft:rgba(139,94,60,.4);
+  --laser:#ff6a1a;
+  --laser-soft:rgba(255,106,26,.4);
   --steel:#15171b;
   --steel-2:#1f2227;
   --steel-3:#2a2e35;
@@ -120,7 +120,7 @@ img{max-width:100%;display:block}
 .c2-hero .half-h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.8rem,2.6vw,2.7rem);line-height:1.05;color:var(--paper);margin-bottom:1.1rem;letter-spacing:-.01em;max-width:720px;white-space:normal}
 .c2-hero .half-h em{font-style:italic;color:var(--laser)}
 .c2-hero .half-p{font-size:1rem;line-height:1.7;color:rgba(248,246,241,.92);margin-bottom:1.3rem;max-width:480px}
-.c2-hero .half-meta{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(139,94,60,.85)}
+.c2-hero .half-meta{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,106,26,.85)}
 .c2-hero .c2-right .half-inner{margin-left:auto;text-align:right}
 .c2-hero .c2-right .half-p,.c2-hero .c2-right .half-h{margin-left:auto}
 
@@ -139,11 +139,11 @@ img{max-width:100%;display:block}
 /* Flow row — Arv → Evolution ← Framtid at bottom */
 .c2-flow{position:absolute;left:50%;bottom:4rem;transform:translateX(-50%);z-index:10;display:flex;justify-content:center;align-items:center;gap:0;pointer-events:none}
 .c2-flow .node{flex:0 0 110px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:.5rem;line-height:1}
-.c2-flow .node .dot{display:block;width:7px;height:7px;border-radius:50%;border:1px solid rgba(139,94,60,.7);background:transparent;flex-shrink:0;box-shadow:0 0 6px rgba(139,94,60,.35)}
-.c2-flow .node.mid .dot{background:var(--laser);width:9px;height:9px;border-color:var(--laser);box-shadow:0 0 10px var(--laser),0 0 22px rgba(139,94,60,.55)}
-.c2-flow .conn{flex:0 0 50px;height:1px;background:linear-gradient(90deg,rgba(139,94,60,.4),rgba(139,94,60,.75),rgba(139,94,60,.4))}
-.c2-flow .node .lbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(139,94,60,.85);text-shadow:0 1px 6px rgba(0,0,0,.9)}
-.c2-flow .node.mid .lbl{color:var(--laser);font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 10px rgba(139,94,60,.5)}
+.c2-flow .node .dot{display:block;width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,106,26,.7);background:transparent;flex-shrink:0;box-shadow:0 0 6px rgba(255,106,26,.35)}
+.c2-flow .node.mid .dot{background:var(--laser);width:9px;height:9px;border-color:var(--laser);box-shadow:0 0 10px var(--laser),0 0 22px rgba(255,106,26,.55)}
+.c2-flow .conn{flex:0 0 50px;height:1px;background:linear-gradient(90deg,rgba(255,106,26,.4),rgba(255,106,26,.75),rgba(255,106,26,.4))}
+.c2-flow .node .lbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,106,26,.85);text-shadow:0 1px 6px rgba(0,0,0,.9)}
+.c2-flow .node.mid .lbl{color:var(--laser);font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 10px rgba(255,106,26,.5)}
 
 /* Responsive: tablet */
 @media (max-width:1100px){
@@ -248,7 +248,7 @@ img{max-width:100%;display:block}
 .philosophy-strip::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse at 80% 0%, rgba(139,94,60,.08), transparent 55%),
+    radial-gradient(ellipse at 80% 0%, rgba(255,106,26,.08), transparent 55%),
     linear-gradient(180deg, var(--steel-2), var(--steel));
   pointer-events:none;
 }
@@ -324,7 +324,7 @@ img{max-width:100%;display:block}
 .cta-band::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(139,94,60,.18), transparent 55%);
+    radial-gradient(ellipse at 50% 100%, rgba(255,106,26,.18), transparent 55%);
   pointer-events:none;
 }
 .cta-band .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:1.5rem;position:relative;z-index:1}
@@ -349,7 +349,7 @@ img{max-width:100%;display:block}
 
 /* ─────────────────────────────────────────── INNEHAV */
 .innehav-hero{position:relative;padding:9rem 3rem 6rem;background:var(--steel);color:var(--paper);overflow:hidden;text-align:center}
-.innehav-hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(139,94,60,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(139,94,60,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
+.innehav-hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
 .innehav-head{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
 .innehav-hero .section-label{color:var(--laser);display:inline-block;padding:0;margin-bottom:1.5rem}
 .innehav-hero .section-label::before{display:none}
@@ -426,7 +426,7 @@ img{max-width:100%;display:block}
 
 /* SEC 2 — Ägarfilosofi (poster-style) */
 .om-philosophy{background:var(--steel);color:var(--paper);padding:7rem 3rem;position:relative;overflow:hidden}
-.om-philosophy::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(139,94,60,.06),transparent 60%);pointer-events:none}
+.om-philosophy::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,106,26,.06),transparent 60%);pointer-events:none}
 .om-philosophy-head{max-width:1080px;margin:0 auto 4rem;text-align:center;position:relative;z-index:2}
 .om-philosophy-head .om-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--laser);margin-bottom:1.2rem;display:block}
 .om-philosophy-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:500;color:var(--paper);line-height:1.05;letter-spacing:-.015em;margin-bottom:1.2rem}
@@ -533,7 +533,7 @@ img{max-width:100%;display:block}
 
 /* ─────────────────────────────────────────── KONTAKT / PEOPLE */
 .kontakt-hero{position:relative;background:var(--steel);color:var(--paper);padding:9rem 3rem 4rem;overflow:hidden;text-align:center}
-.kontakt-hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(139,94,60,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(139,94,60,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
+.kontakt-hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
 .kontakt-hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
 .kontakt-hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:1.5rem;display:inline-block}
@@ -681,24 +681,24 @@ img{max-width:100%;display:block}
       <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
         <g stroke="#ffffff" stroke-width="1" fill="none" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" opacity=".48">
           <!-- sensor 1: OEE -->
-          <circle cx="1240" cy="280" r="6" stroke="#8b5e3c" stroke-opacity=".95"/>
-          <circle cx="1240" cy="280" r="13" stroke="#8b5e3c" stroke-opacity=".55"/>
+          <circle cx="1240" cy="280" r="6" stroke="#ff6a1a" stroke-opacity=".95"/>
+          <circle cx="1240" cy="280" r="13" stroke="#ff6a1a" stroke-opacity=".55"/>
           <line x1="1234" y1="280" x2="1140" y2="240"/>
           <line x1="1140" y1="240" x2="990" y2="240"/>
           <text x="1002" y="233" fill="#ffffff" fill-opacity=".9" data-i18n="ann.s1.h">OEE · 87%</text>
           <text x="1002" y="255" fill="#ffffff" fill-opacity=".65" data-i18n="ann.s1.s">EFFEKTIVITET · NOMINELL</text>
 
           <!-- sensor 2: VIBRATION (predictive maintenance) -->
-          <circle cx="1340" cy="580" r="6" stroke="#8b5e3c" stroke-opacity=".95"/>
-          <circle cx="1340" cy="580" r="13" stroke="#8b5e3c" stroke-opacity=".55"/>
+          <circle cx="1340" cy="580" r="6" stroke="#ff6a1a" stroke-opacity=".95"/>
+          <circle cx="1340" cy="580" r="13" stroke="#ff6a1a" stroke-opacity=".55"/>
           <line x1="1334" y1="580" x2="1220" y2="630"/>
           <line x1="1220" y1="630" x2="1060" y2="630"/>
           <text x="1074" y="622" fill="#ffffff" fill-opacity=".9" data-i18n="ann.s2.h">VIBRATION · 0.42 g</text>
           <text x="1074" y="644" fill="#ffffff" fill-opacity=".65" data-i18n="ann.s2.s">PREDIKTIVT UNDERHÅLL</text>
 
           <!-- sensor 3: PREDIKTION (ML model) -->
-          <circle cx="1380" cy="320" r="6" stroke="#8b5e3c" stroke-opacity=".95"/>
-          <circle cx="1380" cy="320" r="13" stroke="#8b5e3c" stroke-opacity=".55"/>
+          <circle cx="1380" cy="320" r="6" stroke="#ff6a1a" stroke-opacity=".95"/>
+          <circle cx="1380" cy="320" r="13" stroke="#ff6a1a" stroke-opacity=".55"/>
           <line x1="1374" y1="320" x2="1260" y2="100"/>
           <line x1="1260" y1="100" x2="1100" y2="100"/>
           <text x="1112" y="93" fill="#ffffff" fill-opacity=".9" data-i18n="ann.s3.h">PREDIKTION · 94%</text>
@@ -994,15 +994,15 @@ img{max-width:100%;display:block}
   <section class="om-tech scan-section">
     <div class="om-tech-bg">
       <svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">
-        <g stroke="#8b5e3c" stroke-width="1" fill="none" opacity=".7">
+        <g stroke="#ff6a1a" stroke-width="1" fill="none" opacity=".7">
           <circle cx="200" cy="120" r="6"/><circle cx="200" cy="120" r="14"/>
           <line x1="206" y1="120" x2="320" y2="80"/>
           <circle cx="1340" cy="380" r="6"/><circle cx="1340" cy="380" r="14"/>
           <line x1="1334" y1="380" x2="1220" y2="430"/>
           <g transform="translate(1400, 100)">
-            <circle cx="0" cy="0" r="3" fill="#8b5e3c"/><circle cx="0" cy="20" r="3" fill="#8b5e3c"/>
-            <circle cx="40" cy="-5" r="3" fill="#8b5e3c"/><circle cx="40" cy="15" r="3" fill="#8b5e3c"/><circle cx="40" cy="35" r="3" fill="#8b5e3c"/>
-            <circle cx="80" cy="10" r="3" fill="#8b5e3c"/><circle cx="80" cy="30" r="3" fill="#8b5e3c"/>
+            <circle cx="0" cy="0" r="3" fill="#ff6a1a"/><circle cx="0" cy="20" r="3" fill="#ff6a1a"/>
+            <circle cx="40" cy="-5" r="3" fill="#ff6a1a"/><circle cx="40" cy="15" r="3" fill="#ff6a1a"/><circle cx="40" cy="35" r="3" fill="#ff6a1a"/>
+            <circle cx="80" cy="10" r="3" fill="#ff6a1a"/><circle cx="80" cy="30" r="3" fill="#ff6a1a"/>
             <line x1="3" y1="0" x2="37" y2="-5" stroke-opacity=".5"/><line x1="3" y1="0" x2="37" y2="15" stroke-opacity=".5"/>
             <line x1="3" y1="20" x2="37" y2="15" stroke-opacity=".5"/><line x1="3" y1="20" x2="37" y2="35" stroke-opacity=".5"/>
             <line x1="43" y1="-5" x2="77" y2="10" stroke-opacity=".5"/><line x1="43" y1="15" x2="77" y2="10" stroke-opacity=".5"/>
@@ -1164,7 +1164,7 @@ img{max-width:100%;display:block}
 
         <div class="p-card reveal">
           <div class="p-card-top">
-            <div class="p-avatar"><svg viewBox="0 0 72 72"><defs><linearGradient id="bgL2" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#c8c2b8"/><stop offset="1" stop-color="#8b5e3c"/></linearGradient></defs><rect width="72" height="72" fill="url(#bgL2)"/><text x="36" y="44" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#f8f6f1">LR</text></svg></div>
+            <div class="p-avatar"><svg viewBox="0 0 72 72"><defs><linearGradient id="bgL2" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#c8c2b8"/><stop offset="1" stop-color="#ff6a1a"/></linearGradient></defs><rect width="72" height="72" fill="url(#bgL2)"/><text x="36" y="44" text-anchor="middle" font-family="Cormorant Garamond" font-size="26" font-weight="500" fill="#f8f6f1">LR</text></svg></div>
             <div>
               <div class="p-card-name">Lars Rodert</div>
               <div class="p-card-firm">ÖstVäst Capital</div>
