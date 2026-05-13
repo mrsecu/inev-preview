@@ -203,7 +203,6 @@ img{max-width:100%;display:block}
   letter-spacing:.2em;text-transform:uppercase;
   color:var(--rust);margin-bottom:1.5rem;
 }
-.section-label::before{content:'';width:24px;height:1px;background:var(--rust);display:block}
 .section-title{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(2.2rem,4.5vw,4rem);
@@ -529,8 +528,7 @@ img{max-width:100%;display:block}
 /* ─────────────────────────────────────────── KONTAKT / PEOPLE */
 .kontakt-hero{position:relative;background:var(--steel);color:var(--paper);padding:10rem 3rem 6rem;overflow:hidden;text-align:center}
 .kontakt-hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.07) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
-.kontakt-hero::after{content:'';position:absolute;width:80px;height:80px;left:50%;top:65%;transform:translate(-50%,-50%);border:1px solid var(--laser);border-radius:50%;box-shadow:0 0 24px rgba(255,106,26,.3);animation:locator 4s ease-in-out infinite;z-index:1;pointer-events:none}
-@keyframes locator{0%,100%{transform:translate(-50%,-50%) scale(.6);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
+50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
 .kontakt-hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
 .kontakt-hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:1.5rem;display:inline-block}
 .kontakt-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:500;line-height:1.02;letter-spacing:-.015em;margin-bottom:1.2rem;color:var(--paper)}
@@ -899,7 +897,7 @@ img{max-width:100%;display:block}
     <div class="footer-top">
       <div class="footer-brand"><span class="logo" data-page="home">INEV</span><div class="meta" data-i18n="f.tagline">Industriell Evolution</div></div>
       <div class="footer-col"><h4>Sajt</h4><a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a><a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a></div>
-      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p></div>
+      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p><p style="margin-top:.8rem">Kungsgatan 8<br>111 43 Stockholm</p></div>
       <div class="footer-col"><h4>Kontakt</h4><a href="mailto:info@inev.se">info@inev.se</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 INEV AB</span><span><span style="color:var(--laser)">●</span> <span data-i18n="f.online">System online</span></span></div>
@@ -955,7 +953,7 @@ img{max-width:100%;display:block}
       <div class="om-acq-head">
         <div class="reveal">
           <span class="om-eyebrow" data-i18n="om.fv.label">· Förvärvsmodell</span>
-          <h2 data-i18n="om.fv.title">Vi förvärvar bolag vi förstår — <em>för att äga dem för alltid.</em></h2>
+          <h2 data-i18n="om.fv.title">Vi förvärvar bolag — <em>för att äga dem för alltid.</em></h2>
         </div>
         <div class="reveal">
           <p class="body" data-i18n="om.fv.p1">Vi förvärvar bolag med dokumenterad lönsamhet, starkt kassaflöde, en tydlig position inom sin nisch och en ledning som vill driva bolaget vidare — med en ny ägare som stöttar, inte styr.</p>
@@ -967,7 +965,7 @@ img{max-width:100%;display:block}
           <h5 data-i18n="om.fv.profile">Typisk profil</h5>
           <div class="pills">
             <span class="pill" data-i18n="om.fv.pill1">Omsättning 150–500 MSEK</span>
-            <span class="pill" data-i18n="om.fv.pill2">+10% EBITDA-marginal</span>
+            <span class="pill" data-i18n="om.fv.pill2">+10% EBITA-marginal</span>
             <span class="pill" data-i18n="om.fv.pill3">Bevisad lönsamhet</span>
             <span class="pill" data-i18n="om.fv.pill4">Nischad position</span>
             <span class="pill" data-i18n="om.fv.pill5">Engagerad ledning</span>
@@ -1024,7 +1022,7 @@ img{max-width:100%;display:block}
     <div class="footer-top">
       <div class="footer-brand"><span class="logo" data-page="home">INEV</span><div class="meta" data-i18n="f.tagline">Industriell Evolution</div></div>
       <div class="footer-col"><h4>Sajt</h4><a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a><a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a></div>
-      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p></div>
+      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p><p style="margin-top:.8rem">Kungsgatan 8<br>111 43 Stockholm</p></div>
       <div class="footer-col"><h4>Kontakt</h4><a href="mailto:info@inev.se">info@inev.se</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 INEV AB</span><span><span style="color:var(--laser)">●</span> <span data-i18n="f.online">System online</span></span></div>
@@ -1036,8 +1034,8 @@ img{max-width:100%;display:block}
 <div class="page" id="page-historik">
   <div class="historik-hero">
     <div class="historik-bg"></div>
-    <span class="eyebrow" data-i18n="hi.eyebrow">· Historik 2017—2026</span>
-    <h1 data-i18n="hi.title">Förvärvshistorik<br><em>sedan 2017.</em></h1>
+    <span class="eyebrow" data-i18n="hi.eyebrow">· Historik</span>
+    <h1 data-i18n="hi.title">En resa av förvärv, tillväxt och långsiktigt byggande av en industriell koncern med rötter i Småland.</h1>
     <p data-i18n="hi.body">En resa av förvärv, tillväxt och långsiktigt byggande av en industriell koncern med rötter i Småland.</p>
   </div>
   <div class="timeline-wrap">
@@ -1063,7 +1061,7 @@ img{max-width:100%;display:block}
     <div class="footer-top">
       <div class="footer-brand"><span class="logo" data-page="home">INEV</span><div class="meta" data-i18n="f.tagline">Industriell Evolution</div></div>
       <div class="footer-col"><h4>Sajt</h4><a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a><a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a></div>
-      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p></div>
+      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p><p style="margin-top:.8rem">Kungsgatan 8<br>111 43 Stockholm</p></div>
       <div class="footer-col"><h4>Kontakt</h4><a href="mailto:info@inev.se">info@inev.se</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 INEV AB</span><span><span style="color:var(--laser)">●</span> <span data-i18n="f.online">System online</span></span></div>
@@ -1227,7 +1225,7 @@ img{max-width:100%;display:block}
     <div class="footer-top">
       <div class="footer-brand"><span class="logo" data-page="home">INEV</span><div class="meta" data-i18n="f.tagline">Industriell Evolution</div></div>
       <div class="footer-col"><h4>Sajt</h4><a data-page="innehav">Innehav</a><a data-page="om">Om INEV</a><a data-page="historik">Historik</a><a data-page="kontakt">Kontakt</a></div>
-      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p></div>
+      <div class="footer-col"><h4>Kontor</h4><p>Östra Storgatan 13 B<br>553 21 Jönköping</p><p style="margin-top:.8rem">Kungsgatan 8<br>111 43 Stockholm</p></div>
       <div class="footer-col"><h4>Kontakt</h4><a href="mailto:info@inev.se">info@inev.se</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 INEV AB</span><span><span style="color:var(--laser)">●</span> <span data-i18n="f.online">System online</span></span></div>
@@ -1370,7 +1368,7 @@ img{max-width:100%;display:block}
     {n:'Lanab Group',      c:'Kontorsmöbler', c_en:'Office Furniture', cat:'tillverkning', catName:'Tillverkning', catName_en:'Manufacturing', y:'2017', d:'Ergonomiska kontorsmöbler — rätt pris, bra kvalitet, rimlig tid.', d_en:'Ergonomic office furniture — right price, solid quality, reasonable lead time.', img:'https://www.lanab.com/storage/.../Lanab-hero-rashult.webp', l:'lanabgroup.se'},
     {n:'Viking Beds of Sweden', c:'Sängar', c_en:'Beds', cat:'tillverkning', catName:'Tillverkning', catName_en:'Manufacturing', y:'2020', d:'Bygger följsamma sängar med hög kvalitet.', d_en:'Builds high-quality, adaptive beds.', img:'https://vikingbeds.se/wp-content/uploads/2024/06/Viking-beds-Villa-Skog15582-1-scaled.jpg', l:'vikingbeds.se'},
     {n:'Bewa Intraf',      c:'Specialfordon — Samhällskritiska tjänster', c_en:'Special Vehicles — Critical Services', cat:'tillverkning', catName:'Tillverkning', catName_en:'Manufacturing', y:'2022', d:'30+ års erfarenhet av anpassningar — färdtjänst, sjuktransport, skolbuss.', d_en:'30+ years of experience adapting vehicles for paratransit, medical transport and school buses.', img:'https://bewaintraf.se/wp-content/uploads/2026/02/Toppbild.jpg', l:'bewaintraf.com'},
-    {n:'Terri',            c:'Skogsmaskiner', c_en:'Forestry Machinery', cat:'tillverkning', catName:'Tillverkning', catName_en:'Manufacturing', y:'2024', d:'Skogsmaskiner för beståndsgående gallring — skördare, skotare, kombi.', d_en:'Forestry machines for selective thinning — harvesters, forwarders, combination units.', img:'https://www.terri.se/wp-content/uploads/TERRI-3CW-1-2250x1501.png', l:'terri.se'}
+    {n:'Terri',            c:'Skogsmaskiner', c_en:'Forestry Machines', cat:'tillverkning', catName:'Tillverkning', catName_en:'Manufacturing', y:'2024', d:'Skogsmaskiner för beståndsgående gallring — skördare, skotare, kombi.', d_en:'Forestry machines for selective thinning — harvesters, forwarders, combination units.', img:'https://www.terri.se/wp-content/uploads/TERRI-3CW-1-2250x1501.png', l:'terri.se'}
   ];
   // Sort companies alphabetically by name (svensk locale handles å/ä/ö correctly)
   companies.sort((a, b) => a.n.localeCompare(b.n, 'sv'));
@@ -1557,8 +1555,8 @@ img{max-width:100%;display:block}
       'b.jak.bio':'Founder of Maelir — a wholly-owned investment company with holdings across real estate, shipping, agricultural machinery, medtech and fintech.',
       'b.lar.bio':'Senior Advisor and Board Member — Brookfield, Brookfield PP, Brookfield WS and PCCW. Formerly at IKEA Treasury and SEB Asset Management.',
       // historik
-      'hi.eyebrow':'· History 2017—2026',
-      'hi.title':'Acquisition history<br><em>since 2017.</em>',
+      'hi.eyebrow':'· History',
+      'hi.title':'A journey of acquisitions, growth and long-term building of an industrial group with roots in Småland.',
       'hi.body':'A journey of acquisitions, growth and long-term building of an industrial group with roots in Småland.',
       // Kontakt – Team & Styrelse
       'k.team.h2':'Team.',
@@ -1583,12 +1581,12 @@ img{max-width:100%;display:block}
       'om.cs.5.d':'We invest in AI and automation as strategic leverage. The technology agenda is a core matter — not something that can be delegated. We take active responsibility for mapping, planning and executing technology shifts throughout our entire portfolio.',
       // Om – Förvärvsmodell
       'om.fv.label':'· Acquisition model',
-      'om.fv.title':'We acquire companies we understand — <em> to hold them forever.</em>',
+      'om.fv.title':'We acquire companies — <em> to hold them forever.</em>',
       'om.fv.p1':'We acquire companies with documented profitability, strong cash flow, a clear position within their niche and a management team that wants to keep building — with a new owner who supports rather than steers.',
       'om.fv.p2':'We know that selling a business can be an emotional process for a founder. Our process is transparent, respectful and without unnecessary time pressure.',
       'om.fv.profile':'Typical profile',
       'om.fv.pill1':'Revenue 150–500 MSEK',
-      'om.fv.pill2':'+10% EBITDA margin',
+      'om.fv.pill2':'+10% EBITA margin',
       'om.fv.pill3':'Proven profitability',
       'om.fv.pill4':'Niche position',
       'om.fv.pill5':'Engaged management',
