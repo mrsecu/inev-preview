@@ -139,14 +139,7 @@ img{max-width:100%;display:block}
 /* Flow row — Arv → Evolution ← Framtid at bottom */
 .c2-flow{position:absolute;left:0;right:0;bottom:3rem;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0 3rem;pointer-events:none}
 .c2-flow .flow-side{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,106,26,.85);text-shadow:0 1px 6px rgba(0,0,0,.9);flex:0 0 auto;white-space:nowrap}
-.c2-flow .flow-arrow{flex:1;height:1px;margin:0 1.2rem;position:relative;max-width:34%}
-.c2-flow .arr-l{background:linear-gradient(90deg,rgba(255,106,26,.4),rgba(255,106,26,.85))}
-.c2-flow .arr-l::after{content:'';position:absolute;right:0;top:50%;width:7px;height:7px;border-top:1px solid rgba(255,106,26,.9);border-right:1px solid rgba(255,106,26,.9);transform:translate(0,-50%) rotate(45deg)}
-.c2-flow .arr-r{background:linear-gradient(270deg,rgba(255,106,26,.4),rgba(255,106,26,.85))}
-.c2-flow .arr-r::after{content:'';position:absolute;left:0;top:50%;width:7px;height:7px;border-top:1px solid rgba(255,106,26,.9);border-left:1px solid rgba(255,106,26,.9);transform:translate(0,-50%) rotate(-45deg)}
-.c2-flow .flow-evolution{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--laser);text-shadow:0 0 10px rgba(255,106,26,.35)}
-.c2-flow .flow-evolution .dot{width:9px;height:9px;border-radius:50%;background:var(--laser);box-shadow:0 0 12px var(--laser),0 0 26px rgba(255,106,26,.55);animation:c2flowPulse 2.4s ease-in-out infinite}
-@keyframes c2flowPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.15);opacity:.8}}
+
 
 /* Responsive: tablet */
 @media (max-width:1100px){
@@ -157,8 +150,6 @@ img{max-width:100%;display:block}
   .c2-stats .stat .n{font-size:2.4rem}
   .c2-flow{padding:0 1.5rem;gap:.7rem}
   .c2-flow .flow-side{font-size:.55rem;letter-spacing:.14em}
-  .c2-flow .flow-evolution{font-size:.55rem;letter-spacing:.14em}
-  .c2-flow .flow-arrow{margin:0 .7rem}
 }
 
 /* Responsive: mobile — stack vertically: center → arv → framtid → flow */
@@ -174,9 +165,6 @@ img{max-width:100%;display:block}
   .c2-right{order:3;padding-top:2rem;text-align:left}
   .c2-flow{order:4;position:relative;bottom:auto;left:auto;right:auto;transform:none;margin:1.2rem auto 2.5rem;padding:0 1rem;gap:.5rem;justify-content:space-between}
   .c2-flow .flow-side{font-size:.48rem;letter-spacing:.12em}
-  .c2-flow .flow-evolution{font-size:.48rem;letter-spacing:.12em}
-  .c2-flow .flow-evolution .dot{width:7px;height:7px}
-  .c2-flow .flow-arrow{margin:0 .4rem;max-width:24%}
   .c2-center .h{display:block;text-align:center;font-size:clamp(2.6rem,9vw,4rem)}
   .c2-center .h .h-l,.c2-center .h .h-r{display:inline;flex:none;padding:0;text-align:center}
   .c2-center .h .h-r{padding-left:.2em}
@@ -763,12 +751,9 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
-    <!-- Bottom: bridge — Beprövat hantverk → Evolution ← Ny teknik -->
+    <!-- Bottom: two side labels only -->
     <div class="c2-flow">
       <span class="flow-side" data-i18n="h.left.meta">— Beprövat hantverk</span>
-      <span class="flow-arrow arr-l"></span>
-      <span class="flow-evolution"><span class="dot"></span><span data-i18n="h.flow.evolution">Evolution</span></span>
-      <span class="flow-arrow arr-r"></span>
       <span class="flow-side" data-i18n="h.right.meta">Ny teknik —</span>
     </div>
 
