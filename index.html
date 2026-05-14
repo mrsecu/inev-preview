@@ -587,6 +587,23 @@ img{max-width:100%;display:block}
 .bio-edu{display:block;margin-top:.7rem}
 .p-email{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.04em;color:var(--ink);display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
 .p-email:hover{color:var(--laser)}
+/* Team — Variant B cinematic */
+.vb-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.35rem;max-width:75%;margin:0 auto}
+.vb-card{display:flex;flex-direction:column;gap:1.4rem;position:relative}
+.vb-card::before{content:'';position:absolute;top:0;left:0;width:2.4rem;height:1px;background:var(--laser);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.5,0,.3,1);z-index:3}
+.vb-card:hover::before{transform:scaleX(1)}
+.vb-cover{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--steel)}
+.vb-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 8s ease;filter:saturate(.95) contrast(1.05)}
+.vb-card:hover .vb-cover img{transform:scale(1.04)}
+.vb-cover img.zoom{transform:scale(1.18);transform-origin:50% 35%}
+.vb-card:hover .vb-cover img.zoom{transform:scale(1.22)}
+.vb-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,20,.85) 0%,rgba(15,17,20,.35) 30%,rgba(15,17,20,0) 55%);pointer-events:none}
+.vb-overlay{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.4rem 1.4rem;color:var(--paper);z-index:2}
+.vb-overlay .vb-firm{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--laser);text-transform:uppercase;margin-bottom:.45rem}
+.vb-overlay .vb-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;line-height:1.05;letter-spacing:-.005em}
+.vb-body{padding:0 .2rem}
+@media (max-width:900px){.vb-grid{grid-template-columns:1fr;max-width:100%}}
+
 @media(max-width:980px){
   .kontakt-hero .addr{gap:1.5rem;font-size:.6rem}
   .people-head{grid-template-columns:1fr;gap:2rem}
@@ -1099,41 +1116,53 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <div class="people-grid">
+      <div class="vb-grid">
         <!-- PER -->
-        <div class="p-card reveal">
-          <div class="p-card-top">
-            <div class="p-avatar"><img src="photos/per.jpg" alt="Per Rodert" loading="lazy"/></div>
-            <div>
-              <div class="p-card-name">Per Rodert</div>
-              <div class="p-card-firm" data-i18n="k.per.team.role">Styrelseordförande</div>
+        <div class="vb-card reveal">
+          <div class="vb-cover">
+            <img src="photos/Per%20NEW.jpg" alt="Per Rodert" loading="lazy">
+            <div class="vb-overlay">
+              <div class="vb-firm" data-i18n="k.per.team.role">Styrelseordförande</div>
+              <div class="vb-name">Per Rodert</div>
             </div>
           </div>
-          <p class="p-bio" data-i18n="b.per.bio">Tidigare VD inom svensk industri — Munksjö, Rörvik Timber och Alfa Laval International. Bred erfarenhet av styrelseuppdrag i noterad och onoterad miljö: XANO, ITAB, Devport, HV71, Jönköping Business Development m.fl.<span class="bio-edu">Per studerade på Handelshögskolan i Stockholm och tog examen 1977.</span></p>
-          <a href="mailto:per@inev.se" class="p-email">per@inev.se →</a>
+          <div class="vb-body">
+            <p class="p-bio" data-i18n="b.per.bio">Tidigare VD inom svensk industri — Munksjö, Rörvik Timber och Alfa Laval International. Bred erfarenhet av styrelseuppdrag i noterad och onoterad miljö: XANO, ITAB, Devport, HV71, Jönköping Business Development m.fl.<span class="bio-edu">Per studerade på Handelshögskolan i Stockholm och tog examen 1977.</span></p>
+            <a href="mailto:per@inev.se" class="p-email">per@inev.se →</a>
+          </div>
         </div>
 
         <!-- SEBASTIAN -->
-        <div class="p-card reveal">
-          <div class="p-card-top">
-            <div class="p-avatar"><img src="photos/sebastian.jpg" alt="Sebastian Andreescu" loading="lazy"/></div>
-            <div>
-              <div class="p-card-name">Sebastian Andreescu</div>
-              <div class="p-card-firm" data-i18n="k.seb.role">VD INEV</div>
+        <div class="vb-card reveal">
+          <div class="vb-cover">
+            <img src="photos/Sebastian%20NEW.jpeg" alt="Sebastian Andreescu" class="zoom" loading="lazy">
+            <div class="vb-overlay">
+              <div class="vb-firm" data-i18n="k.seb.role">VD INEV</div>
+              <div class="vb-name">Sebastian Andreescu</div>
             </div>
           </div>
-          <p class="p-bio" data-i18n="k.seb.bio">Erfarenhet från general management och supply chain inom tillverkningsindustri, oil &amp; gas, och som tech-entreprenör — senast som grundare och VD för Billhop som 2025 förvärvades av amerikanska Ramp.<span class="bio-edu">Sebastian studerade på Handelshögskolan i Stockholm och tog examen 2008.</span></p>
-          <a href="mailto:sebastian@inev.se" class="p-email">sebastian@inev.se →</a>
+          <div class="vb-body">
+            <p class="p-bio" data-i18n="k.seb.bio">Erfarenhet från general management och supply chain inom tillverkningsindustri, oil &amp; gas, och som tech-entreprenör — senast som grundare och VD för Billhop som 2025 förvärvades av amerikanska Ramp.<span class="bio-edu">Sebastian studerade på Handelshögskolan i Stockholm och tog examen 2008.</span></p>
+            <a href="mailto:sebastian@inev.se" class="p-email">sebastian@inev.se →</a>
+          </div>
         </div>
 
         <!-- INGEMAR -->
-        <div class="p-card reveal">
-          <div class="p-card-top">
-            <div class="p-avatar"><img src="photos/ingemar.jpg" alt="Ingemar Sjögren" loading="lazy"/></div>
-            <div>
-              <div class="p-card-name">Ingemar Sjögren</div>
-              <div class="p-card-firm" data-i18n="k.ing.role">Vice VD INEV</div>
+        <div class="vb-card reveal">
+          <div class="vb-cover">
+            <img src="photos/Ingemar%20NEW.jpg" alt="Ingemar Sjögren" loading="lazy">
+            <div class="vb-overlay">
+              <div class="vb-firm" data-i18n="k.ing.role">Vice VD INEV</div>
+              <div class="vb-name">Ingemar Sjögren</div>
             </div>
+          </div>
+          <div class="vb-body">
+            <p class="p-bio" data-i18n="k.ing.bio">Erfarenhet från management consulting, investment banking, general management och finans inom tillverkningsindustri — senast som grundare och CFO för Billhop (del av Ramp sedan 2025).<span class="bio-edu">Ingemar studerade på Handelshögskolan i Stockholm och tog examen 2008.</span></p>
+            <a href="mailto:ingemar@inev.se" class="p-email">ingemar@inev.se →</a>
+          </div>
+        </div>
+
+      </div>
           </div>
           <p class="p-bio" data-i18n="k.ing.bio">Erfarenhet från management consulting, investment banking, general management och finans inom tillverkningsindustri — senast som grundare och CFO för Billhop (del av Ramp sedan 2025).<span class="bio-edu">Ingemar studerade på Handelshögskolan i Stockholm och tog examen 2008.</span></p>
           <a href="mailto:ingemar@inev.se" class="p-email">ingemar@inev.se →</a>
