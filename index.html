@@ -504,8 +504,8 @@ img{max-width:100%;display:block}
 .tek-pt .num{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--laser);margin-bottom:1rem;display:block}
 
 /* ─────────────────────────────────────────── HISTORIK */
-.historik-hero{position:relative;background:var(--steel);color:var(--paper);padding:9rem 3rem 6rem;overflow:hidden;text-align:center}
-.historik-bg{position:absolute;inset:-8%;z-index:0;background:url('photos/inev-historik-hero-E-skog.png') center 50%/cover no-repeat;transform-origin:50% 50%;animation:slowPan 22s ease-in-out infinite alternate;will-change:transform}
+.historik-hero{position:relative;background:var(--steel);color:var(--paper);padding:12rem 3rem 9rem;overflow:hidden;text-align:center}
+.historik-bg{position:absolute;inset:-8%;z-index:0;background:url('photos/inev-historik-hero-E-skog.png') center 70%/cover no-repeat;transform-origin:50% 50%;animation:slowPan 22s ease-in-out infinite alternate;will-change:transform}
 .historik-hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,14,18,.62) 0%,rgba(10,14,18,.48) 45%,rgba(10,14,18,.68) 100%)}
 .historik-hero > *:not(.historik-bg){position:relative;z-index:2}
 .historik-hero h1{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.2vw,2.8rem);line-height:1.1;font-weight:500;letter-spacing:-.015em;margin-bottom:0;max-width:900px;margin-left:auto;margin-right:auto}
@@ -584,6 +584,7 @@ img{max-width:100%;display:block}
 .chip-owner{border-color:var(--rust);color:var(--rust)}
 .chip-owner .g{background:transparent;border:1.2px solid var(--rust)}
 .p-bio{font-size:.83rem;color:rgba(15,15,14,.62);line-height:1.65;margin-bottom:.8rem}
+.bio-edu{display:block;margin-top:.7rem;color:rgba(15,15,14,.55);font-style:italic;font-size:.92em}
 .p-email{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.04em;color:var(--ink);display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
 .p-email:hover{color:var(--laser)}
 @media(max-width:980px){
@@ -1108,7 +1109,7 @@ img{max-width:100%;display:block}
               <div class="p-card-firm" data-i18n="k.per.team.role">Styrelseordförande</div>
             </div>
           </div>
-          <p class="p-bio" data-i18n="b.per.bio">Tidigare VD inom svensk industri — Munksjö, Rörvik Timber och Alfa Laval International. Bred erfarenhet av styrelseuppdrag i noterad och onoterad miljö: XANO, ITAB, Devport, HV71, Jönköping Business Development m.fl. Per studerade på Handelshögskolan i Stockholm och tog examen 1977.</p>
+          <p class="p-bio" data-i18n="b.per.bio">Tidigare VD inom svensk industri — Munksjö, Rörvik Timber och Alfa Laval International. Bred erfarenhet av styrelseuppdrag i noterad och onoterad miljö: XANO, ITAB, Devport, HV71, Jönköping Business Development m.fl.<span class="bio-edu">Per studerade på Handelshögskolan i Stockholm och tog examen 1977.</span></p>
           <a href="mailto:per@inev.se" class="p-email">per@inev.se →</a>
         </div>
 
@@ -1121,7 +1122,7 @@ img{max-width:100%;display:block}
               <div class="p-card-firm" data-i18n="k.seb.role">VD INEV</div>
             </div>
           </div>
-          <p class="p-bio" data-i18n="k.seb.bio">Erfarenhet från general management och supply chain inom tillverkningsindustri, oil &amp; gas, och som tech-entreprenör — senast som grundare och VD för Billhop som 2025 förvärvades av amerikanska Ramp. Sebastian studerade på Handelshögskolan i Stockholm och tog examen 2008.</p>
+          <p class="p-bio" data-i18n="k.seb.bio">Erfarenhet från general management och supply chain inom tillverkningsindustri, oil &amp; gas, och som tech-entreprenör — senast som grundare och VD för Billhop som 2025 förvärvades av amerikanska Ramp.<span class="bio-edu">Sebastian studerade på Handelshögskolan i Stockholm och tog examen 2008.</span></p>
           <a href="mailto:sebastian@inev.se" class="p-email">sebastian@inev.se →</a>
         </div>
 
@@ -1134,7 +1135,7 @@ img{max-width:100%;display:block}
               <div class="p-card-firm" data-i18n="k.ing.role">Vice VD INEV</div>
             </div>
           </div>
-          <p class="p-bio" data-i18n="k.ing.bio">Erfarenhet från management consulting, investment banking, general management och finans inom tillverkningsindustri — senast som grundare och CFO för Billhop (del av Ramp sedan 2025). Ingemar studerade på Handelshögskolan i Stockholm och tog examen 2008.</p>
+          <p class="p-bio" data-i18n="k.ing.bio">Erfarenhet från management consulting, investment banking, general management och finans inom tillverkningsindustri — senast som grundare och CFO för Billhop (del av Ramp sedan 2025).<span class="bio-edu">Ingemar studerade på Handelshögskolan i Stockholm och tog examen 2008.</span></p>
           <a href="mailto:ingemar@inev.se" class="p-email">ingemar@inev.se →</a>
         </div>
       </div>
@@ -1544,14 +1545,14 @@ img{max-width:100%;display:block}
       'k.send':'Send email','k.sthlm':'Stockholm office','k.email':'Email',
       'k.team.label':'· Operating team','k.team.title':'Operating team — <em style="font-style:italic;color:var(--rust)">since April 2026.</em>',
       'k.seb.role':'CEO INEV',
-      'k.seb.bio':'Experience from general management and supply chain in manufacturing, oil &amp; gas, and as a tech entrepreneur — most recently as founder and CEO of Billhop, sold to US-based Ramp in 2025. Sebastian studied at the Stockholm School of Economics and graduated in 2008.',
+      'k.seb.bio':'Experience from general management and supply chain in manufacturing, oil &amp; gas, and as a tech entrepreneur — most recently as founder and CEO of Billhop, sold to US-based Ramp in 2025.<span class="bio-edu">Sebastian studied at the Stockholm School of Economics and graduated in 2008.</span>',
       'k.ing.role':'Deputy CEO INEV',
-      'k.ing.bio':'Experience from management consulting, investment banking, general management and finance in manufacturing — most recently as founder and CFO of Billhop (part of Ramp since 2025). Ingemar studied at the Stockholm School of Economics and graduated in 2008.',
+      'k.ing.bio':'Experience from management consulting, investment banking, general management and finance in manufacturing — most recently as founder and CFO of Billhop (part of Ramp since 2025).<span class="bio-edu">Ingemar studied at the Stockholm School of Economics and graduated in 2008.</span>',
       // board
       'b.label':'· Board &amp; Owners','b.title':'Board &amp; <em>Owners.</em>',
       'b.body':'Since April 2026 INEV has a new ownership group which, together with chairman Per Rodert, constitutes the board. We are a combination of industrial experience, capital-markets competence and entrepreneurship — with a shared belief that local Swedish companies can win globally.',
       'b.per.role':'Chairman of the Board',
-      'b.per.bio':'Former CEO across Swedish industry — Munksjö, Rörvik Timber and Alfa Laval International. Broad experience from board work in listed and unlisted companies: XANO, ITAB, Devport, HV71, Jönköping Business Development and others. Per studied at the Stockholm School of Economics and graduated in 1977.',
+      'b.per.bio':'Former CEO across Swedish industry — Munksjö, Rörvik Timber and Alfa Laval International. Broad experience from board work in listed and unlisted companies: XANO, ITAB, Devport, HV71, Jönköping Business Development and others.<span class="bio-edu">Per studied at the Stockholm School of Economics and graduated in 1977.</span>',
       'b.hen.bio':'25+ years of experience in investment banking — Carnegie, Morgan Stanley and Handelsbanken Capital Markets.',
       'b.jak.bio':'Founder of Maelir — a wholly-owned investment company with holdings across real estate, shipping, agricultural machinery, medtech and fintech.',
       'b.lar.bio':'Senior Advisor and Board Member — Brookfield, Brookfield PP, Brookfield WS and PCCW. Formerly at IKEA Treasury and SEB Asset Management.',
