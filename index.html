@@ -534,10 +534,8 @@ img{max-width:100%;display:block}
 .tl-content p{font-size:.9rem;color:rgba(15,15,14,.6);line-height:1.7}
 
 /* ─────────────────────────────────────────── KONTAKT / PEOPLE */
-.kontakt-hero{position:relative;background:var(--steel);color:var(--paper);padding:9rem 3rem 4rem;overflow:hidden;text-align:center}
-.kontakt-hero-bg{position:absolute;inset:0;z-index:0;background:url('photos/inev-kontakt-hero-D-stillhet.png') center center/cover no-repeat}
-.kontakt-hero-dark{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,14,18,.55) 0%,rgba(10,14,18,.35) 50%,rgba(10,14,18,.60) 100%);pointer-events:none}
-.kontakt-hero::before{content:'';position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
+.kontakt-hero{position:relative;background:linear-gradient(180deg,rgba(10,14,18,.55) 0%,rgba(10,14,18,.35) 50%,rgba(10,14,18,.60) 100%),url('photos/inev-kontakt-hero-D-stillhet.png') center center/cover no-repeat,var(--steel);color:var(--paper);padding:9rem 3rem 4rem;overflow:hidden;text-align:center}
+.kontakt-hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
 .kontakt-hero-inner{position:relative;z-index:10;max-width:900px;margin:0 auto;text-align:center;opacity:1;visibility:visible}
 .kontakt-hero .reveal,.kontakt-hero .reveal *{opacity:1!important;transform:none!important}
@@ -1081,8 +1079,6 @@ img{max-width:100%;display:block}
 <div class="page" id="page-kontakt" data-screen-label="Kontakt">
   <!-- HERO -->
   <section class="kontakt-hero">
-    <div class="kontakt-hero-bg"></div>
-    <div class="kontakt-hero-dark"></div>
     <div class="kontakt-hero-inner">
       <span class="eyebrow" data-i18n="k.eyebrow">· Kontakt</span>
       <h1 data-i18n="k.title">Diskret process. <em>Inga mellanhänder.</em></h1>
