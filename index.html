@@ -640,6 +640,12 @@ img{max-width:100%;display:block}
   .tl-item::before{left:35px}
   .tl-item .marker{left:40px}
   .era-events{grid-template-columns:1fr}
+  /* Carousel pcard mobile fix: stack year + activity instead of flex-row */
+  .pcard-meta{flex-direction:column;align-items:flex-start;gap:.25rem;letter-spacing:.14em;word-break:break-word}
+  .pcard-meta .sep{display:none}
+  .pcard-name{font-size:1.4rem}
+  /* Innehav inn-card mobile fix: allow long labels to wrap mid-word */
+  .inn-card .activity,.inn-card .meta{white-space:normal;word-break:break-word;letter-spacing:.14em;max-width:100%}
 }
 
 /* reduce motion */
