@@ -1428,7 +1428,7 @@ img{max-width:100%;display:block}
       <div class="pcard">
         <div class="pcard-img"><img src="${c.img}" alt="${c.n}" loading="lazy"/></div>
         <div class="pcard-body">
-          <div class="pcard-meta">${forv} ${c.y}<span class="sep">·</span>${(lang==='en' && c.c_en) ? c.c_en : c.c}</div>
+          <div class="pcard-meta"><span class="pm-yr">${forv} ${c.y}</span><span class="sep">·</span><span class="pm-act">${(lang==='en' && c.c_en) ? c.c_en : c.c}</span></div>
           <div class="pcard-name">${c.n}</div>
           <div class="pcard-desc">${(lang==='en' && c.d_en) ? c.d_en : c.d}</div>
           <a class="pcard-link" href="https://${c.l}" target="_blank" rel="noopener">${c.l} <span class="arr">→</span></a>
