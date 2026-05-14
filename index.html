@@ -349,8 +349,10 @@ img{max-width:100%;display:block}
 
 /* ─────────────────────────────────────────── INNEHAV */
 .innehav-hero{position:relative;padding:9rem 3rem 6rem;background:var(--steel);color:var(--paper);overflow:hidden;text-align:center}
-.innehav-hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
-.innehav-head{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
+.innehav-hero-bg{position:absolute;inset:0;z-index:0;background:url('photos/inev-innehav-hero-C-konstellation.png') center center/cover no-repeat}
+.innehav-hero-dark{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,14,18,.55) 0%,rgba(10,14,18,.35) 50%,rgba(10,14,18,.60) 100%);pointer-events:none}
+.innehav-hero-grid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
+.innehav-head{position:relative;z-index:3;max-width:900px;margin:0 auto;text-align:center}
 .innehav-hero .section-label{color:var(--laser);display:inline-block;padding:0;margin-bottom:1.5rem}
 .innehav-hero .section-label::before{display:none}
 .innehav-hero h1{color:var(--paper);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.8rem,3.2vw,2.8rem);line-height:1.1;letter-spacing:-.015em;margin-bottom:1.2rem}
@@ -533,9 +535,11 @@ img{max-width:100%;display:block}
 
 /* ─────────────────────────────────────────── KONTAKT / PEOPLE */
 .kontakt-hero{position:relative;background:var(--steel);color:var(--paper);padding:9rem 3rem 4rem;overflow:hidden;text-align:center}
-.kontakt-hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
+.kontakt-hero-bg{position:absolute;inset:0;z-index:0;background:url('photos/inev-kontakt-hero-D-stillhet.png') center center/cover no-repeat}
+.kontakt-hero-dark{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,14,18,.55) 0%,rgba(10,14,18,.35) 50%,rgba(10,14,18,.60) 100%);pointer-events:none}
+.kontakt-hero::before{content:'';position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
-.kontakt-hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
+.kontakt-hero-inner{position:relative;z-index:3;max-width:900px;margin:0 auto;text-align:center}
 .kontakt-hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:1.5rem;display:inline-block}
 .kontakt-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-.015em;margin-bottom:.8rem;color:var(--paper)}
 .kontakt-hero h1 em{font-style:italic;color:var(--laser)}
@@ -759,12 +763,10 @@ img{max-width:100%;display:block}
         </div>
         <div class="reveal">
           <p class="body-text" data-i18n="a.p1">Bakom INEV står en grupp entreprenörer som engagerar sig för att säkerställa svensk konkurrenskraft i en värld som förändras snabbt. I nära samarbete med ledningsteamen bidrar vi med strategisk kompetens, nätverk, kapital och hjälp med att implementera ny teknik.</p>
-          <p class="body-text" data-i18n="a.p2">Det nya ägarkollektivet vill bygga vidare på INEV:s ursprungliga ägarfilosofi — med en aktivare teknikagenda och en framåtlutad förvärvshorisont.</p>
           <div class="pill-row">
             <span class="pill" data-i18n="p.1">Förvärv</span>
-            <span class="pill" data-i18n="p.2">Industri</span>
-            <span class="pill" data-i18n="p.3">Handel</span>
             <span class="pill" data-i18n="p.4">Långsiktighet</span>
+            <span class="pill" data-i18n="p.2">Decentraliserat</span>
             <span class="pill" data-i18n="p.5">AI &amp; automation</span>
           </div>
         </div>
@@ -878,10 +880,12 @@ img{max-width:100%;display:block}
 <!-- ═════════════════════════════════════════════════ PAGE: INNEHAV -->
 <div class="page" id="page-innehav">
   <section class="innehav-hero scan-section">
+    <div class="innehav-hero-bg"></div>
+    <div class="innehav-hero-dark"></div>
     <div class="innehav-hero-grid"></div>
     <div class="innehav-head">
       <div class="section-label reveal" data-i18n="in.label">· Portfölj</div>
-      <h1 class="section-title reveal" data-i18n="in.title">Våra <em>innehav.</em></h1>
+      <h1 class="section-title reveal" data-i18n="in.title">Våra <em>bolag.</em></h1>
       <p class="body-text reveal" data-i18n="in.body" style="margin-bottom:0">Elva bolag inom tillverkning, handel och tjänster — alla med starka marknadspositioner, erfarna ledningar och ett tydligt värdeskapande inom sin nisch.</p>
     </div>
   </section>
@@ -919,7 +923,7 @@ img{max-width:100%;display:block}
     <div class="om-banner-bg"></div>
     <div class="om-banner-inner reveal">
       <span class="om-eyebrow" data-i18n="om.label">· Om INEV</span>
-      <h1 class="om-banner-title" data-i18n="om.title">En sammansättning av industriell erfarenhet, kapitalmarknadskompetens och entreprenörskap — <em>med en gemensam övertygelse.</em></h1>
+      <h1 class="om-banner-title" data-i18n="om.title">Om <em>oss.</em></h1>
     </div>
   </section>
 
@@ -1078,6 +1082,8 @@ img{max-width:100%;display:block}
 <div class="page" id="page-kontakt" data-screen-label="Kontakt">
   <!-- HERO -->
   <section class="kontakt-hero">
+    <div class="kontakt-hero-bg"></div>
+    <div class="kontakt-hero-dark"></div>
     <div class="kontakt-hero-inner reveal">
       <span class="eyebrow" data-i18n="k.eyebrow">· Kontakt</span>
       <h1 data-i18n="k.title">Diskret process. <em>Inga mellanhänder.</em></h1>
@@ -1506,7 +1512,7 @@ img{max-width:100%;display:block}
       'a.label':'· About INEV','a.title':'Combining experience and curiosity <em>creates value.</em>','a.cta':'Read more about us',
       'a.p1':'Behind INEV stands a group of entrepreneurs committed to safeguarding Swedish competitiveness in a changing world. Working closely with the portfolio management teams, we contribute with strategic guidance, a vast network, capital and help with implementing new technology across our portfolio companies.',
       'a.p2':'The new ownership collective intends to build on INEV\'s original ownership philosophy — with a more active technology agenda and a forward-leaning acquisition horizon.',
-      'p.1':'Acquisitions','p.2':'Industry','p.3':'Trade','p.4':'Long-termism','p.5':'AI & automation',
+      'p.1':'Acquisitions','p.2':'Decentralised','p.3':'Trade','p.4':'Long-termism','p.5':'AI & automation',
       // philosophy
       'ph.label':'· Our philosophy','ph.title':'Five cornerstones — <em>one conviction.</em>',
       'ph.1.h':'Eternal horizon','ph.1.p':'We don\'t trade companies. The founder is assured that their company has a permanent home — not a portfolio position.',
@@ -1524,21 +1530,21 @@ img{max-width:100%;display:block}
       // footer
       'f.site':'Site','f.office':'Offices','f.contact':'Contact',
       // innehav
-      'in.label':'· Portfolio','in.title':'Our <em>holdings.</em>',
+      'in.label':'· Portfolio','in.title':'Our <em>companies.</em>',
       'in.body':'Eleven companies across manufacturing, trade and services — all with strong market positions, experienced leadership and a clear value-add within their niche.',
       'cat.metall':'Metal — manufacturing & processing','cat.metall.n':'05 companies',
       'cat.gron':'Green-area maintenance','cat.gron.n':'02 companies',
       'cat.mobler':'Furniture','cat.mobler.n':'02 companies',
       'cat.fordon':'Vehicles','cat.fordon.n':'02 companies',
       // om
-      'om.label':'· About INEV','om.title':'A combination of industrial experience, capital markets expertise and entrepreneurship — <em>with a shared conviction.</em>',
+      'om.label':'· About INEV','om.title':'About <em>us.</em>',
       'om.stat.year':'Founded','om.stat.bolag':'Portfolio companies','om.stat.anst':'Employees','om.stat.rev':'Revenue 2025',
       'om.sub':'A combination of industrial experience, capital markets expertise and entrepreneurship — with a shared conviction.',
       'om.p1':'INEV was founded in 2017 under the leadership of Per Rodert. In 2026, INEV underwent an ownership consolidation in which a new investor collective, together with a few of the previous owners, acquired all shares in INEV.',
       'om.p2':'The new ownership collective intends to build on INEV\'s original ownership philosophy through active engagement, accelerated implementation of new technology and a proactive acquisition agenda.',
       'om.p3':'Based in Jönköping, we own eleven portfolio companies with more than 500 employees and revenues above SEK 1.5 billion.',
       // kontakt
-      'k.eyebrow':'· Contact','k.title':'Discreet process. <em>No intermediaries.</em>',
+      'k.eyebrow':'· Contact','k.title':'Discreet process. <br>No intermediaries.',
       'k.body':'We are always interested in hearing from entrepreneurs, partners and potential sellers. Confidential and without time pressure.',
       'k.send':'Send email','k.sthlm':'Stockholm office','k.email':'Email',
       'k.team.label':'· Operating team','k.team.title':'Operating team — <em style="font-style:italic;color:var(--rust)">since April 2026.</em>',
