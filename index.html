@@ -430,7 +430,8 @@ img{max-width:100%;display:block}
 .om-philosophy-head .om-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--laser);margin-bottom:1.2rem;display:block}
 .om-philosophy-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:500;color:var(--paper);line-height:1.05;letter-spacing:-.015em;margin-bottom:1.2rem}
 .om-philosophy-head h2 em{font-style:italic;color:var(--laser)}
-.om-philosophy-head .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;line-height:1.5;color:rgba(248,246,241,.65);max-width:680px;margin:0 auto}
+.om-philosophy-head .lead{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:500;line-height:1.25;letter-spacing:-.005em;color:var(--paper);max-width:980px;margin:0 auto}
+.om-philosophy-head .lead em{font-style:italic;color:var(--laser)}
 .om-posters{max-width:1280px;margin:0 auto;position:relative;z-index:2;display:flex;flex-direction:column;gap:2rem}
 .om-posters .poster{display:grid;grid-template-columns:200px 1fr;gap:3rem;align-items:center;padding:2.2rem 0;border-top:1px solid rgba(248,246,241,.12)}
 .om-posters .poster:first-child{border-top:none}
@@ -959,8 +960,7 @@ img{max-width:100%;display:block}
   <section class="om-philosophy scan-section">
     <div class="om-philosophy-head reveal">
       <span class="om-eyebrow" data-i18n="om.ph.label">· Ägarfilosofi</span>
-      <h2 data-i18n="om.ph.title">Vår ägarfilosofi i <em>fem delar.</em></h2>
-      <p class="lead" data-i18n="om.ph.body">Vår filosofi har sin utgångspunkt i våra grundläggande övertygelser om vad som skapar värde på lång sikt — för bolagen, för deras anställda, och för samhället runt omkring.</p>
+      <p class="lead" data-i18n="om.ph.body">Vår filosofi har sin utgångspunkt i våra grundläggande övertygelser om vad som skapar värde på lång sikt — <em>för bolagen, för deras anställda, och för samhället runt omkring.</em></p>
     </div>
     <div class="om-posters">
       <div class="poster reveal"><div class="num">01</div><div><h3 data-i18n="om.cs.1.t">Evig ägarhorisont</h3><p data-i18n="om.cs.1.d">Vi säljer inte. När en grundare överlåter sitt livsverk till INEV vet de att bolaget har ett permanent hem — inte en position i en portfölj. Den eviga ägarhorisonten skapar ett helt annat ledarskapskontrakt - ett kontrakt där VD:n kan planera, investera och bygga för framtiden.</p></div></div>
@@ -1583,7 +1583,7 @@ img{max-width:100%;display:block}
       // Om – Ägarfilosofi
       'om.ph.label':'· Our philosophy',
       'om.ph.title':'Our philosophy in <em>five parts.</em>',
-      'om.ph.body':'Our philosophy is rooted in our fundamental convictions in regards to long term value creation — for the companies, for their employees, and for the society around them.',
+      'om.ph.body':'Our philosophy is rooted in our fundamental convictions in regards to long term value creation — <em>for the companies, for their employees, and for the society around them.</em>',
       'om.cs.1.t':'Perpetual ownership',
       'om.cs.1.d':'We don\'t sell. When a founder hands their life\'s work to INEV, they can be assured that the company has a permanent home — not a position in a portfolio. The long term investment horizon facilitates a different type of leadership contract - one where the CEO can plan, invest and build for the future.',
       'om.cs.2.t':'Decentralised leadership',
