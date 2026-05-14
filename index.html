@@ -137,13 +137,16 @@ img{max-width:100%;display:block}
 .c2-stats .stat .l{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:rgba(248,246,241,.85);text-transform:uppercase;font-weight:400}
 
 /* Flow row — Arv → Evolution ← Framtid at bottom */
-.c2-flow{position:absolute;left:50%;bottom:4rem;transform:translateX(-50%);z-index:10;display:flex;justify-content:center;align-items:center;gap:0;pointer-events:none}
-.c2-flow .node{flex:0 0 110px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:.5rem;line-height:1}
-.c2-flow .node .dot{display:block;width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,106,26,.7);background:transparent;flex-shrink:0;box-shadow:0 0 6px rgba(255,106,26,.35)}
-.c2-flow .node.mid .dot{background:var(--laser);width:9px;height:9px;border-color:var(--laser);box-shadow:0 0 10px var(--laser),0 0 22px rgba(255,106,26,.55)}
-.c2-flow .conn{flex:0 0 50px;height:1px;background:linear-gradient(90deg,rgba(255,106,26,.4),rgba(255,106,26,.75),rgba(255,106,26,.4))}
-.c2-flow .node .lbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,106,26,.85);text-shadow:0 1px 6px rgba(0,0,0,.9)}
-.c2-flow .node.mid .lbl{color:var(--laser);font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 10px rgba(255,106,26,.5)}
+.c2-flow{position:absolute;left:0;right:0;bottom:3rem;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0 3rem;pointer-events:none}
+.c2-flow .flow-side{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,106,26,.85);text-shadow:0 1px 6px rgba(0,0,0,.9);flex:0 0 auto;white-space:nowrap}
+.c2-flow .flow-arrow{flex:1;height:1px;margin:0 1.2rem;position:relative;max-width:34%}
+.c2-flow .arr-l{background:linear-gradient(90deg,rgba(255,106,26,.4),rgba(255,106,26,.85))}
+.c2-flow .arr-l::after{content:'';position:absolute;right:0;top:50%;width:7px;height:7px;border-top:1px solid rgba(255,106,26,.9);border-right:1px solid rgba(255,106,26,.9);transform:translate(0,-50%) rotate(45deg)}
+.c2-flow .arr-r{background:linear-gradient(270deg,rgba(255,106,26,.4),rgba(255,106,26,.85))}
+.c2-flow .arr-r::after{content:'';position:absolute;left:0;top:50%;width:7px;height:7px;border-top:1px solid rgba(255,106,26,.9);border-left:1px solid rgba(255,106,26,.9);transform:translate(0,-50%) rotate(-45deg)}
+.c2-flow .flow-evolution{display:inline-flex;align-items:center;gap:.55rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--laser);text-shadow:0 0 14px rgba(255,106,26,.45)}
+.c2-flow .flow-evolution .dot{width:9px;height:9px;border-radius:50%;background:var(--laser);box-shadow:0 0 12px var(--laser),0 0 26px rgba(255,106,26,.55);animation:c2flowPulse 2.4s ease-in-out infinite}
+@keyframes c2flowPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.15);opacity:.8}}
 
 /* Responsive: tablet */
 @media (max-width:1100px){
@@ -152,9 +155,10 @@ img{max-width:100%;display:block}
   .c2-hero .half-inner{max-width:520px}
   .c2-center .h{font-size:clamp(2.8rem,6.4vw,5rem)}
   .c2-stats .stat .n{font-size:2.4rem}
-  .c2-flow .node{flex:0 0 90px}
-  .c2-flow .conn{flex:0 0 40px}
-  .c2-flow .node .lbl{font-size:.56rem;letter-spacing:.14em}
+  .c2-flow{padding:0 1.5rem;gap:.7rem}
+  .c2-flow .flow-side{font-size:.55rem;letter-spacing:.14em}
+  .c2-flow .flow-evolution{font-size:.7rem;letter-spacing:.18em}
+  .c2-flow .flow-arrow{margin:0 .7rem}
 }
 
 /* Responsive: mobile — stack vertically: center → arv → framtid → flow */
@@ -168,9 +172,11 @@ img{max-width:100%;display:block}
   .c2-center{order:1;position:relative;top:auto;left:auto;transform:none;width:100%;max-width:none;padding:3rem 1.4rem 2rem;margin:0}
   .c2-left{order:2}
   .c2-right{order:3;padding-top:2rem;text-align:left}
-  .c2-flow{order:4;position:relative;bottom:auto;left:auto;transform:none;margin:1.5rem auto 2.5rem;justify-content:center}
-  .c2-flow .node{flex:0 0 80px}
-  .c2-flow .conn{flex:0 0 30px}
+  .c2-flow{order:4;position:relative;bottom:auto;left:auto;right:auto;transform:none;margin:1.2rem auto 2.5rem;padding:0 1rem;gap:.5rem;justify-content:space-between}
+  .c2-flow .flow-side{font-size:.48rem;letter-spacing:.12em}
+  .c2-flow .flow-evolution{font-size:.6rem;letter-spacing:.16em}
+  .c2-flow .flow-evolution .dot{width:7px;height:7px}
+  .c2-flow .flow-arrow{margin:0 .4rem;max-width:24%}
   .c2-center .h{display:block;text-align:center;font-size:clamp(2.6rem,9vw,4rem)}
   .c2-center .h .h-l,.c2-center .h .h-r{display:inline;flex:none;padding:0;text-align:center}
   .c2-center .h .h-r{padding-left:.2em}
@@ -734,7 +740,6 @@ img{max-width:100%;display:block}
       <div class="half-inner">
         <h2 class="half-h" data-i18n="h.left.h">Företag som kan <em>sitt hantverk</em>.</h2>
         <p class="half-p" data-i18n="h.left.body">Vi förvärvar lönsamma svenska bolag som byggt upp en tydlig marknadsposition genom entreprenöriell drivkraft och beslut som är tagna nära kunden.</p>
-        <div class="half-meta" data-i18n="h.left.meta">— Beprövat hantverk</div>
       </div>
     </div>
 
@@ -743,7 +748,6 @@ img{max-width:100%;display:block}
       <div class="half-inner">
         <h2 class="half-h" data-i18n="h.right.h">Rustade för <em>en ny tid</em>.</h2>
         <p class="half-p" data-i18n="h.right.body">Vi hjälper våra bolag med att implementera AI, automation och uppkopplad produktion — för att utvecklas med samtiden och säkerställa svensk konkurrenskraft över tid.</p>
-        <div class="half-meta" data-i18n="h.right.meta">Ny teknik —</div>
       </div>
     </div>
 
@@ -759,13 +763,13 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
-    <!-- Bottom: flow Arv → Evolution → Framtid -->
+    <!-- Bottom: bridge — Beprövat hantverk → Evolution ← Ny teknik -->
     <div class="c2-flow">
-      <div class="node"><span class="dot"></span><span class="lbl" data-i18n="h.flow.arv">Arv</span></div>
-      <div class="conn"></div>
-      <div class="node mid"><span class="dot"></span><span class="lbl" data-i18n="h.flow.evolution">Evolution</span></div>
-      <div class="conn"></div>
-      <div class="node"><span class="dot"></span><span class="lbl" data-i18n="h.flow.framtid">Framtid</span></div>
+      <span class="flow-side" data-i18n="h.left.meta">— Beprövat hantverk</span>
+      <span class="flow-arrow arr-l"></span>
+      <span class="flow-evolution"><span class="dot"></span><span data-i18n="h.flow.evolution">Evolution</span></span>
+      <span class="flow-arrow arr-r"></span>
+      <span class="flow-side" data-i18n="h.right.meta">Ny teknik —</span>
     </div>
 
   </section>
