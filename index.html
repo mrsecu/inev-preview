@@ -539,7 +539,9 @@ img{max-width:100%;display:block}
 .kontakt-hero-dark{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,14,18,.55) 0%,rgba(10,14,18,.35) 50%,rgba(10,14,18,.60) 100%);pointer-events:none}
 .kontakt-hero::before{content:'';position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,106,26,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,26,.13) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at 50% 60%,black 30%,transparent 80%);pointer-events:none}
 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.9}}
-.kontakt-hero-inner{position:relative;z-index:3;max-width:900px;margin:0 auto;text-align:center}
+.kontakt-hero-inner{position:relative;z-index:10;max-width:900px;margin:0 auto;text-align:center;opacity:1;visibility:visible}
+.kontakt-hero .reveal,.kontakt-hero .reveal *{opacity:1!important;transform:none!important}
+
 .kontakt-hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--laser);text-transform:uppercase;margin-bottom:1.5rem;display:inline-block}
 .kontakt-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:500;line-height:1.1;letter-spacing:-.015em;margin-bottom:.8rem;color:var(--paper)}
 .kontakt-hero h1 em{font-style:italic;color:var(--laser)}
