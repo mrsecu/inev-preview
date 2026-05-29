@@ -86,8 +86,8 @@ info@inev.se för allmänna frågor. För ledningen direkt: per@inev.se, sebasti
 
 ## Länkar
 
-- Webbplats: https://inev.nu/
-- Innehav: https://inev.nu/#innehav
-- Om INEV: https://inev.nu/#om
-- Historik: https://inev.nu/#historik
-- Kontakt: https://inev.nu/#kontakt
+- Webbplats: https://inev.se/
+- Innehav: https://inev.se/#innehav
+- Om INEV: https://inev.se/#om
+- Historik: https://inev.se/#historik
+- Kontakt: https://inev.se/#kontakt

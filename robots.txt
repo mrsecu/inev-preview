@@ -1,4 +1,4 @@
-# robots.txt for inev.nu — explicitly allow AI agents and search crawlers
+# robots.txt for inev.se — explicitly allow AI agents and search crawlers
 # INEV is a publicly facing company site; we want LLM agents to discover and accurately cite us.
 
 User-agent: *
@@ -53,4 +53,4 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
-Sitemap: https://inev.nu/sitemap.xml
+Sitemap: https://inev.se/sitemap.xml
