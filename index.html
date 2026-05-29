@@ -473,13 +473,15 @@ body{
   .kontakt-foot{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr 1fr}
   .hero-grid{grid-template-columns:1fr;gap:24px}
-  /* Timeline: switch from horizontal line to vertical stack */
+  /* Timeline: vertical stack with consistent left-aligned years (no above/below alternation) */
   .timeline-horiz{display:flex;flex-direction:column;height:auto;gap:0;margin:32px 0}
   .timeline-horiz::before{display:none}
-  .yr-col{display:flex;flex-direction:row;gap:16px;height:auto;border-top:1px solid var(--border-subtle);padding:20px 0;position:relative;align-items:flex-start}
-  .yr-col.is-above,.yr-col.is-below{flex-direction:row}
-  .yr-col.is-above .yr-content,.yr-col.is-below .yr-content{position:static;top:auto;bottom:auto;left:auto;right:auto;text-align:left;flex-direction:row;align-items:flex-start;gap:16px;flex:1;padding:0;display:flex}
-  .yr-dot{position:static;transform:none;width:10px;height:10px;margin-top:8px;flex:0 0 auto;align-self:flex-start}
+  .yr-col,.yr-col.is-above,.yr-col.is-below{display:flex;flex-direction:row;gap:16px;height:auto;border-top:1px solid var(--border-subtle);padding:20px 0;position:relative;align-items:flex-start}
+  /* Normalize DOM order: dot first, then content, regardless of is-above/is-below */
+  .yr-col .yr-dot{order:-1}
+  .yr-col .yr-content{order:0}
+  .yr-col .yr-content{position:static;top:auto;bottom:auto;left:auto;right:auto;text-align:left;flex-direction:row;align-items:flex-start;gap:16px;flex:1;padding:0;display:flex}
+  .yr-dot{position:static;transform:none;width:10px;height:10px;margin-top:11px;flex:0 0 auto;align-self:flex-start}
   .yr-num{font-size:28px;min-width:64px;text-align:left;flex:0 0 auto}
   .yr-events{width:auto;flex:1}
 }
